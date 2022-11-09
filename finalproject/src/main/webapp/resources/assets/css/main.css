@@ -1634,13 +1634,13 @@ input, select, textarea {
 				background-color: #888888;
 			}
 
-			input[type="button"].alt:active,
+			/*input[type="button"].alt:active,
 			input[type="submit"].alt:active,
 			input[type="reset"].alt:active,
 			button.alt:active,
 			.button.alt:active {
 				background-color: #999999;
-			}
+			}*/
 
 		input[type="button"].small,
 		input[type="submit"].small,

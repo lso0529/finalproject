@@ -29,26 +29,7 @@
 			}, 100);
 		});
 
-	// Nav.
-		$nav_links
-			.on('click', function(event) {
 
-				var href = $(this).attr('href');
-
-				// Not a panel link? Bail.
-					if (href.charAt(0) != '#'
-					||	$panels.filter(href).length == 0)
-						return;
-
-				// Prevent default.
-					event.preventDefault();
-					event.stopPropagation();
-
-				// Change panels.
-					if (window.location.hash != href)
-						window.location.hash = href;
-
-			});
 
 	// Panels.
 

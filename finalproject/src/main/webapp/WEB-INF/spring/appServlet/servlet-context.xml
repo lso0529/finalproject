@@ -29,14 +29,6 @@
     
 	
 	<context:component-scan base-package="org.zerock.controller" />
-	<context:component-scan base-package="org.zerock" />
-	
-	<context:component-scan base-package="org.zerock.board.*"/>
-	<context:component-scan base-package="org.zerock.board.mapper"/>
-	
-	<context:component-scan base-package="org.zerock.member.*"/>
-	
-	<context:component-scan base-package="org.zerock.random.*"/>
 	
 	
 </beans:beans>

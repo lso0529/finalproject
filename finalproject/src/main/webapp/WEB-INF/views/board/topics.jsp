@@ -16,7 +16,7 @@
 		<div class="row">
 			<div class="col-4 col-6-medium col-12-small">
 				<div style="width: 233.328px; height: 174.984; background-color: white; line-height : 174.984px" align="center">
-					<a href="#">글감</a>
+					<a href="?topic=글감">글감</a>
 				</div>
 					<!-- <a href="#" class="image fit"><img src="${pageContext.request.contextPath}/resources/images/pic01.jpg" alt=""></a> -->
 				</div>

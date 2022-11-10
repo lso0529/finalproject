@@ -39,11 +39,7 @@
 	</bean>
 	
 	<!-- MyBatis의 맵퍼 패키지를 스캔하는 태그를 작성 -->
-	<mybatis-spring:scan base-package="org.zerock.testmapper"/>
-	<mybatis-spring:scan base-package="org.zerock.board.mapper"/>
-	<mybatis-spring:scan base-package="org.zerock.member.mapper"/>
-	<mybatis-spring:scan base-package="org.zerock.reply.mapper"/>
-	<mybatis-spring:scan base-package="org.zerock.random.mapper"/>
+	<mybatis-spring:scan base-package="org.zerock.mapper"/>
 	
 	
 	

@@ -13,15 +13,10 @@
 		<p>글감을 클릭하고 (아무튼 그런 얘기)</p>
 		<section>
 			<div class="row">
-				<c:forEach var="list" items="${list }">
+				<c:forEach var="list" items="${boardlist }">
 					<div class="col-4 col-6-medium col-12-small">
-						<div
-							style="width: 233.328px; height: 174.984; background-color: #E4E4E4; line-height: 174.984px"
-							align="center">
-							<button
-								style="background-color: #E4E4E4; color: black; font-size: 20px"
-								onclick="location.href='list?topic=${list.tname }'">${list.tname }</button>
-							<!-- <a href="list?topic=${list.tname }">${list.tname }</a> -->
+						<div style="width: 233.328px; height: 174.984; background-color: #E4E4E4; line-height: 174.984px" align="center">
+							<button	style="background-color: #E4E4E4; color: black; font-size: 20px" onclick="location.href='list?topic=${boardlist.name }'">${boardlist.content }</button>
 						</div>
 					</div>
 				</c:forEach>

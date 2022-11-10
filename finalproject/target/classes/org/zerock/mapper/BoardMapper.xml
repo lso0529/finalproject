@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.zerock.mapper.BoardMapper">
+	
+	<!-- 전체 주제 목록  -->
+	<select id="topicAll" resultType="org.zerock.command.TopicVO">
+		select * from topics
+	</select>
+	
+	<!-- 주제에 대한 글 전체 목록 -->
+	<select id="boardAll" resultType = "org.zerock.command.BoardVO">
+		select * from board where topic=#{topic}
+	</select>
+	
+</mapper>

@@ -1,6 +1,7 @@
 <%@page import="java.net.URLEncoder"%>
 <%@ page language="java" contentType="text/html; charset=Utf-8"
     pageEncoding="Utf-8"%>
+<!DOCTYPE HTML>
 <%@include file="../include/header.jsp"%>
 <div id="main">
 <!-- Work -->

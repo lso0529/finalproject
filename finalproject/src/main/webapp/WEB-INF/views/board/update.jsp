@@ -7,18 +7,17 @@
 	<!-- Contact -->
 	<article id="contact" class="panel">
 		<header>
-			<h2>${topic }에 대해 글쓰기</h2>
+			<h2>${topic }에 쓴 글 수정</h2>
 		</header>
 		<form action="regiform" method="post">
-			<!-- 안됨 -->
-			<input type="checkbox" name="secret"> 비밀글
 			<div>
 				<div class="row">
 					<div class="col-12">
-						<textarea name="content" placeholder="내용을 입력하세요." rows="6"></textarea>
+						<textarea name="message" placeholder="내용을 입력하세요." rows="6"></textarea>
 					</div>
 					<div class="col-12">
-						<input type="submit" value="저장" />
+						<input type="submit" value="수정" />
+						<button>삭제</button>
 					</div>
 				</div>
 			</div>

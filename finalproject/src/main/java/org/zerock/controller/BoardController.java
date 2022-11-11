@@ -39,12 +39,15 @@ public class BoardController {
 		System.out.println(boardlist);
 		
 		model.addAttribute("boardlist", boardlist);
+		model.addAttribute("topic", topic);
 		
 		return "/board/list";
 	}
 	
 	@RequestMapping("/register")
-	public String register(Model model) {
+	public String register(@RequestParam("topic") String topic, Model model) {
+		
+		model.addAttribute("topic", topic);
 		
 		return "/board/register";
 	}

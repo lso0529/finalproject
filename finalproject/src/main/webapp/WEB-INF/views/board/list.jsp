@@ -8,18 +8,20 @@
 	<!-- Work -->
 	<article id="work" class="panel">
 		<header>
-			<h2>글감</h2>
+			<h2>${topic }</h2>
 		</header>
-		<p>글감을 클릭하고 (아무튼 그런 얘기)</p>
+		<p>
+			${topic }에 대한 다른 사람들의 이야기를 들어보세요.<br>
+			<button style = "" onclick="location.href='register?topic=${topic}'">글쓰기</button>
+		</p>
+		
 		<section>
-			<div class="row">
-				<c:forEach var="list" items="${boardlist }">
-					<div class="col-4 col-6-medium col-12-small">
-						<div style="width: 233.328px; height: 174.984; background-color: #E4E4E4; line-height: 174.984px" align="center">
-							<button	style="background-color: #E4E4E4; color: black; font-size: 20px" onclick="location.href='list?topic=${boardlist.name }'">${boardlist.content }</button>
-						</div>
-					</div>
-				</c:forEach>
+			<div class="row" align="center">
+					<c:forEach var="boardlist" items="${boardlist }">
+							<div class="col-lg-6 mb-2 pr-lg-1" style="background-color: #E4E4E4; width: 70%; height: 400px; margin: auto; line-height:400px; padding: 0;" align="center">
+								<button	style="background-color: #E4E4E4; color: black; font-size: 20px">${boardlist.content }</button>
+							</div>
+					</c:forEach>
 			</div>
 		</section>
 	</article>

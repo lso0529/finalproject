@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import org.zerock.command.MemberVO;
 import org.zerock.mapper.MemberMapper;
 
-@Service
+@Service("memberService")
 public class MemberServiceImpl implements MemberService {
 	
 	@Autowired

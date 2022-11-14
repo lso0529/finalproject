@@ -7,17 +7,16 @@
  <mapper namespace="org.zerock.mapper.MemberMapper">
  
  	<insert  id="join" parameterType="org.zerock.command.MemberVO">
-		insert into member(email, pw, name) 
-		values (#{email}, #{pw}, #{name})	
+		insert into members (email, pw, name) values (#{email}, #{pw}, #{name})	
  	</insert>
  	
  	<select id="login" parameterType="org.zerock.command.MemberVO" resultType="int">
- 		select count(*) as result from member 
+ 		select count(*) as result from members
 		where email = #{email} and pw = #{pw}
  	</select>
  
 	 <select id="emailCheck" resultType="int">
-		select count(*) as result from member where email = #{email}
+		select count(*) as result from members where email = #{email}
 	</select>
  
  </mapper> 

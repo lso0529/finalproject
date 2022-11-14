@@ -51,4 +51,17 @@ public class BoardController {
 		
 		return "/board/register";
 	}
+	
+	@RequestMapping("/mypage")
+	public String mypage() {
+		return "/board/mypage";
+	}
+	
+	@RequestMapping("/regiform")
+	public String regiform(BoardVO vo) {
+		
+		service.register(vo);
+		
+		return "/board/mypage";
+	}
 }

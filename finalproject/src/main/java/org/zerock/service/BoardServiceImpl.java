@@ -28,5 +28,10 @@ public class BoardServiceImpl implements BoardService {
 		
 		return boardlist;
 	}
+	
+	@Override
+	public void register(BoardVO vo) {
+		mapper.register(vo);		
+	}
 
 }

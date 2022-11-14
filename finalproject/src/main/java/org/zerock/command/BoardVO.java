@@ -13,4 +13,5 @@ public class BoardVO {
 	private String topic;
 	private String content;
 	private String voca;
+	private String secret;
 }

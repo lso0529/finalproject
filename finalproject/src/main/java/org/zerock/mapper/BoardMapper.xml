@@ -15,4 +15,8 @@
 		select * from board where topic=#{topic}
 	</select>
 	
+	<update id="register" parameterType="org.zerock.command.BoardVO">
+		insert into board (name, topic, content, secret) values ("test1", #{topic}, #{content}, #{secret} )
+	</update>
+	
 </mapper>

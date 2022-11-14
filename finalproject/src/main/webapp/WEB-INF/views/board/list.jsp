@@ -11,7 +11,7 @@
 			<h2>${topic }</h2>
 		</header>
 		<p>
-			${topic }에 대한 다른 사람들의 이야기를 들어보세요.<br>
+			"${topic }"에 대한 다른 사람들의 이야기를 들어보세요.<br>
 			<button style = "" onclick="location.href='register?topic=${topic}'">글쓰기</button>
 		</p>
 		

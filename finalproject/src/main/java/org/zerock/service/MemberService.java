@@ -1,5 +1,8 @@
 package org.zerock.service;
 
+import java.util.ArrayList;
+
+import org.zerock.command.BoardVO;
 import org.zerock.command.MemberVO;
 
 public interface MemberService {

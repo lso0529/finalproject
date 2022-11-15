@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=Utf-8"
     pageEncoding="Utf-8"%>
-<%@ page session="false" %>
+<%//String name= (String)session.getAttribute("user_name"); 
+//System.out.println(name);%>
 <html>
  	<head>
 		<title>Astral by HTML5 UP</title>

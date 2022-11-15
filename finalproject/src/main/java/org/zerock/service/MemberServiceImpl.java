@@ -1,7 +1,10 @@
 package org.zerock.service;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.zerock.command.BoardVO;
 import org.zerock.command.MemberVO;
 import org.zerock.mapper.MemberMapper;
 
@@ -34,8 +37,6 @@ public class MemberServiceImpl implements MemberService {
 		System.out.println("이메일 개수 : "+result);
 		return 0;
 	}
-	
-	
 
 
 }

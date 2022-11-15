@@ -33,5 +33,18 @@ public class BoardServiceImpl implements BoardService {
 	public void register(BoardVO vo) {
 		mapper.register(vo);		
 	}
+	
+	@Override
+	public TopicVO selectTopic(int tno) {
+		TopicVO vo = mapper.selectTopic(tno);
+		return vo;
+	}
+	
+	@Override
+	public ArrayList<BoardVO> mylist(String name) {
 
+		ArrayList<BoardVO> mylist = mapper.mylist(name);
+		
+		return mylist;
+	}
 }

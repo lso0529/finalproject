@@ -13,10 +13,12 @@
 			<div>
 				<div class="row">
 					<div class="col-12">
-						<textarea name="message" placeholder="내용을 입력하세요." rows="6"></textarea>
+						<textarea name="message" placeholder="내용을 입력하세요." rows="6" readonly="readonly"></textarea>
 					</div>
 					<div class="col-12">
 						<input type="submit" value="수정" />
+						<button>삭제</button>
+						<button>취소</button>
 					</div>
 				</div>
 			</div>

@@ -22,7 +22,7 @@ public class MemberController {
 	@RequestMapping("/mypage")
 	public String mypage() {
 		System.out.println("MemberController -> mypage()");
-		return "/member/mypage";
+		return "/board/mypage";
 	}
 	
 	// 로그인 페이지 연결

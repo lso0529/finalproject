@@ -3,19 +3,26 @@ package org.zerock.controller;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Random;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.zerock.command.TopicVO;
+import org.zerock.service.BoardService;
 
 /**
  * Handles requests for the application home page.
  */
 @Controller
 public class HomeController {
+	
+	@Autowired
+	BoardService service;
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
@@ -32,6 +39,27 @@ public class HomeController {
 		String formattedDate = dateFormat.format(date);
 		
 		model.addAttribute("serverTime", formattedDate );
+		
+		// 글감 랜덤 출력
+		Random random = new Random();
+		
+		//토탈 수 구해와서 어쩌구 저쩌구 
+		int tno = (int)(random.nextInt(10));
+		
+		TopicVO vo = service.selectTopic(tno);
+		
+//		while(true) {
+//			if(vo==null) {
+//				vo = service.selectTopic(tno);
+//			} else {
+//				break;
+//			}
+//		}
+		
+		System.out.println(vo.getTno());
+		System.out.println(vo.getTname());
+		
+		model.addAttribute("topic", vo.getTname());
 		
 		return "home";
 	}

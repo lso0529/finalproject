@@ -12,11 +12,22 @@
 	
 	<!-- 주제에 대한 글 전체 목록 -->
 	<select id="boardAll" resultType = "org.zerock.command.BoardVO">
-		select * from board where topic=#{topic}
+		select * from board where topic=#{topic} and secret='0'
 	</select>
 	
-	<update id="register" parameterType="org.zerock.command.BoardVO">
-		insert into board (name, topic, content, secret) values ("test1", #{topic}, #{content}, #{secret} )
+	<!-- 글 등록 -->
+	<update id="register">
+		insert into board (name, topic, content, secret) values (#{name}, #{topic}, #{content}, #{secret} )
 	</update>
+	
+	<!-- 홈 화면에 뜰 주제 선정 -->
+	<select id="selectTopic" resultType="org.zerock.command.TopicVO">
+		select * from topics where tno = #{tno}
+	</select>
+	
+	<!-- 마이페이지에 뜰 글 목록 -->
+	<select id="mylist" resultType = "org.zerock.command.BoardVO">
+		select * from board where name=#{name}
+	</select>
 	
 </mapper>

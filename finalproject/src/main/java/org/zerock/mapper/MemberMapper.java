@@ -5,9 +5,8 @@ import org.zerock.command.MemberVO;
 public interface MemberMapper {
 
 	public int join(MemberVO vo);
-	public int login(MemberVO vo);
-	public int emailCheck(String email);
-	public MemberVO pwCheck(MemberVO vo); 
+	public MemberVO login(MemberVO vo);
+	public MemberVO emailCheck(MemberVO vo); 
 	public int pwUpdate(MemberVO vo);
 
 }

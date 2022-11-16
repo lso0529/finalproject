@@ -1,6 +1,9 @@
 <%@include file="../include/header.jsp"%>
 <%@ page language="java" contentType="text/html; charset=Utf-8"
     pageEncoding="Utf-8"%>
+<%String name= (String)session.getAttribute("user_name"); 
+ System.out.println(name);%>
+
 
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets/css/login.css">
 	<script 
@@ -14,11 +17,11 @@
 	<div class="wrapper">
     <div class="container">
        
-      <form class="pwUpdate-form" action="pwUpdate" method="post"
-      				id="pwUpdate-form">
-          <input type="password" placeholder="새비밀번호" class="input" name="pw" id="pw"><br />
+      <form class="pwUpdate-form" action="pwUpdate" method="post" id="pwUpdate-form">
+          <input type="hidden" class="input" name="email" id="email" value="${session.email}">
+          <input type="password" placeholder="새비밀번호" class="input" name="pw" id="pw">
           <input type="password" placeholder="새비밀번호 확인" class="input" name="pw2" id="pw2">
-          <button type="submit" class="btn large loginBtn">변경</button>
+          <input type="submit" class="btn large loginBtn" value="변경">
           <input type="button" class="btn large loginBtn" value="취소" onclick="location.href='loginPage'">
        </form>
        

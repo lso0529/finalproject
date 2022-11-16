@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=Utf-8"
     pageEncoding="Utf-8"%>
 <%//String name= (String)session.getAttribute("user_name"); 
-//System.out.println(name);%>
+ // System.out.println(name);%>
 <html>
  	<head>
 		<title>Astral by HTML5 UP</title>
@@ -20,5 +20,5 @@
 						<a href="${pageContext.request.contextPath}/" class="icon solid fa-home"><span>Home</span></a>
 						<a href="${pageContext.request.contextPath}/board/topics" class="icon solid fa-folder"><span>topics</span></a>
 						<a href="${pageContext.request.contextPath}/member/mypage" class="icon solid fa-envelope"><span>mypage</span></a>
-						<a href="${pageContext.request.contextPath}/member/loginPage" class="icon brands fa-twitter"><span>login</span></a>
+						<a href="${pageContext.request.contextPath}/member/loginPage" class="icon solid fa-user"><span>login</span></a>
 					</nav>

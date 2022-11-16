@@ -45,40 +45,47 @@ public class MemberController {
 	@RequestMapping("login")
 	public String login(MemberVO vo, HttpSession session, RedirectAttributes RA) {
 		System.out.println("MemberController -> login()");
-		int result = service.login(vo);
+		MemberVO resultvo = service.login(vo);
 		
-		if(result == 1) {
-			session.setAttribute("user_email", vo.getEmail());
-			session.setAttribute("user_name", vo.getName());
-			session.setAttribute("user_pw", vo.getPw());
-		}else {
+		if(resultvo == null) {
 			RA.addFlashAttribute("msg", "아이디 또는 패스워드를 확인해주세요.");
+		}else {
+			session.setAttribute("user_email", resultvo.getEmail());
+			session.setAttribute("user_name", resultvo.getName());
+			session.setAttribute("user_pw", resultvo.getPw());
 		}
 		return "redirect:/";
 	}
 	
 	//비밀번호 찾기 이메일 입력 페이지
-	@RequestMapping(value = "/pwCheck", method = RequestMethod.GET)
+	@RequestMapping(value = "/findPw", method = RequestMethod.GET)
 	public String findpw() throws Exception{
-		return "/member/pwCheck";
+		return "/member/findPw";
 	}
 	
-	//비밀번호 확인 
-	@RequestMapping(value = "/findPwform")
-	public String findPwform(MemberVO vo, Model model)throws Exception{
-		MemberVO resultvo = service.pwCheck(vo);
+	//비밀번호 찾기 페이지 연결 
+	@RequestMapping(value = "/emailCheckAndfindPwPage")
+	public String emailCheckAndfindPwPage(MemberVO vo, HttpSession session , RedirectAttributes RA)throws Exception{
+		MemberVO resultvo = service.emailCheck(vo);
 		if(resultvo != null) {
-			model.addAttribute("vo", resultvo);
-			return "/member/pwUpdate"; // 비밀번호 수정 
+			session.setAttribute("email", resultvo.getEmail());
+			return "/member/pwUpdatePage"; // 비밀번호 수정 
 		}else {
-				System.out.println("");
+			RA.addFlashAttribute("msg", "이메일을 확인해주세요.");
 			return "redirect:/"; // 로그인
-			}
+		}
 	}
-	
+	//비밀번호 찾기 이메일 입력 페이지
+	@RequestMapping(value = "/pwUpdatePage")
+	public String pwUpdatePage() throws Exception{
+		System.out.println("MemberController -> pwUpdatePage()");
+		return "/member/pwUpdatePage";
+	}
 	//비밀번호 수정 
-	@RequestMapping(value = "/pwUpdateForm")
+	@RequestMapping(value = "/pwUpdate")
 	public String pwUpdate(MemberVO vo)throws Exception{
+		System.out.println("MemberController -> pwUpdate()");
+		System.out.println(vo.toString());
 		int result = service.pwUpdate(vo);
 		if(result == 1) {
 			System.out.println("y");

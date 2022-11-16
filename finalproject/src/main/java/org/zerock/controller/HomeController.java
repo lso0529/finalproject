@@ -56,10 +56,10 @@ public class HomeController {
 //			}
 //		}
 		
-		System.out.println(vo.getTno());
-		System.out.println(vo.getTname());
+//		System.out.println(vo.getTno());
+//		System.out.println(vo.getTname());
 		
-		model.addAttribute("topic", vo.getTname());
+//		model.addAttribute("topic", vo.getTname());
 		
 		return "home";
 	}

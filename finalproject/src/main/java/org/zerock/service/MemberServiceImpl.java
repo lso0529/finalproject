@@ -24,23 +24,16 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public int login(MemberVO vo) {
-		int result = mapper.login(vo);
-		System.out.println("성공? 실패?: "+result);
-		return result;
+	public MemberVO login(MemberVO vo) {
+		MemberVO resultvo = mapper.login(vo);
+		System.out.println("MemberServiceImpl -> login()");
+		return resultvo;
 	}
 
 
 	@Override
-	public int emailCheck(String email) {
-		int result = mapper.emailCheck(email);
-		System.out.println("이메일 개수 : "+result);
-		return 0;
-	}
-	
-	@Override
-	public MemberVO pwCheck(MemberVO vo) throws Exception {
-		MemberVO resultvo = mapper.pwCheck(vo);
+	public MemberVO emailCheck(MemberVO vo) throws Exception {
+		MemberVO resultvo = mapper.emailCheck(vo);
 		return resultvo;
 	}
 

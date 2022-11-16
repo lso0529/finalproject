@@ -10,21 +10,17 @@
 		insert into members (email, pw, name) values (#{email}, #{pw}, #{name})	
  	</insert>
  	
- 	<select id="login" parameterType="org.zerock.command.MemberVO" resultType="int">
- 		select count(*) as result from members
+ 	<select id="login" parameterType="org.zerock.command.MemberVO" resultType="org.zerock.command.MemberVO">
+ 		select * from members
 		where email = #{email} and pw = #{pw}
  	</select>
  
-	 <select id="emailCheck" resultType="int">
-		select count(*) as result from members where email = #{email}
-	</select>
- 
-    <select id="pwCheck" resultType="org.zerock.command.MemberVO">
-    	select count(*) as result from member where email = #{email} 
+    <select id="emailCheck" resultType="org.zerock.command.MemberVO">
+    	select * from members where email = #{email} 
     </select>	
     
     <update id="pwUpdate" parameterType="org.zerock.command.MemberVO">
-    	update member set pw = #{pw} where email = #{email}
+    	update members set pw = #{pw} where email = #{email}
     </update>
 	
  </mapper> 

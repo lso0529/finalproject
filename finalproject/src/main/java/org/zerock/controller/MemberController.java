@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.command.MemberVO;
@@ -55,5 +56,45 @@ public class MemberController {
 		}
 		return "redirect:/";
 	}
+	
+	//비밀번호 찾기 이메일 입력 페이지
+	@RequestMapping(value = "/pwCheck", method = RequestMethod.GET)
+	public String findpw() throws Exception{
+		return "/member/pwCheck";
+	}
+	
+	//비밀번호 확인 
+	@RequestMapping(value = "/findPwform")
+	public String findPwform(MemberVO vo, Model model)throws Exception{
+		MemberVO resultvo = service.pwCheck(vo);
+		if(resultvo != null) {
+			model.addAttribute("vo", resultvo);
+			return "/member/pwUpdate"; // 비밀번호 수정 
+		}else {
+				System.out.println("");
+			return "redirect:/"; // 로그인
+			}
+	}
+	
+	//비밀번호 수정 
+	@RequestMapping(value = "/pwUpdateForm")
+	public String pwUpdate(MemberVO vo)throws Exception{
+		int result = service.pwUpdate(vo);
+		if(result == 1) {
+			System.out.println("y");
+			return "redirect:/"; //메인으로
+		}else {
+			System.out.println("n");
+			return "redirect:/member/login"; //로그인 
+		}
+	}
+	
+	//로그아웃 처리 
+	@RequestMapping("/logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/";
+	}
+	
 	
 }

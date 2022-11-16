@@ -19,4 +19,12 @@
 		select count(*) as result from members where email = #{email}
 	</select>
  
+    <select id="pwCheck" resultType="org.zerock.command.MemberVO">
+    	select count(*) as result from member where email = #{email} 
+    </select>	
+    
+    <update id="pwUpdate" parameterType="org.zerock.command.MemberVO">
+    	update member set pw = #{pw} where email = #{email}
+    </update>
+	
  </mapper> 

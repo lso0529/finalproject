@@ -37,6 +37,18 @@ public class MemberServiceImpl implements MemberService {
 		System.out.println("이메일 개수 : "+result);
 		return 0;
 	}
+	
+	@Override
+	public MemberVO pwCheck(MemberVO vo) throws Exception {
+		MemberVO resultvo = mapper.pwCheck(vo);
+		return resultvo;
+	}
+
+	@Override
+	public int pwUpdate(MemberVO vo) throws Exception {
+		int result = mapper.pwUpdate(vo);
+		return result;
+	}
 
 
 }

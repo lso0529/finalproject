@@ -26,7 +26,7 @@
           <input type="email" placeholder="이메일" class="input" name="email"><br />
           <input type="password" placeholder="패스워드" class="input" name="pw"><br />
           <button type="submit" class="btn large loginBtn">로그인</button>
-          <span><a style="font-size: 12" href="#">비밀번호 찾기</a></span>
+          <span><a style="font-size: 12" href="pwCheck">비밀번호 찾기</a></span>
        </form>
        
       <form class="signup-form" action="signUp" method="post">

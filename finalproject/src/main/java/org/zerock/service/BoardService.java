@@ -11,4 +11,7 @@ public interface BoardService {
 	public void register(BoardVO vo);
 	public TopicVO selectTopic(int tno);
 	public ArrayList<BoardVO> mylist(String name);
+	public BoardVO mycontent(int bno);
+	public int delete(int bno);
+	public int updateform(BoardVO vo);
 }

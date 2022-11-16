@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.command.BoardVO;
 import org.zerock.command.TopicVO;
 import org.zerock.service.BoardService;
@@ -60,7 +61,8 @@ public class BoardController {
 	@RequestMapping("/mypage")
 	public String mypage(HttpSession session, Model model) {
 		
-		String name = (String) session.getAttribute("user_name");
+//		String name = (String) session.getAttribute("user_name");
+		String name = "name";
 		
 		ArrayList<BoardVO> mylist = service.mylist(name);
 		
@@ -70,7 +72,7 @@ public class BoardController {
 	}
 	
 	@RequestMapping("/regiform")
-	public String regiform(BoardVO vo) {
+	public String regiform(BoardVO vo, RedirectAttributes ra) {
 		
 		System.out.println(vo.getSecret());
 		System.out.println(vo.getTopic());
@@ -82,15 +84,78 @@ public class BoardController {
 		}
 		
 		service.register(vo);
+		ra.addFlashAttribute("msg", "글 등록이 완료되었습니다.");
 		
-		return "/board/mypage";
+		return "redirect: /board/register_result";
+//		return "/board/mypage";
+	}
+	
+	@RequestMapping("/register_result")
+	public void register_result(RedirectAttributes ra) {
+		ra.addFlashAttribute("msg", "글 등록이 완료되었습니다.");
 	}
 	
 	@RequestMapping("/content")
-	public String content(@RequestParam("bno") int bno) {
-		
+	public String content(@RequestParam("bno") int bno,
+			Model model,
+			HttpSession session) {
+		System.out.println(bno);
 		// 글 상세 페이지 보기
+		BoardVO vo = service.mycontent(bno);
+		model.addAttribute("vo", vo);
 		
+		//비밀글인지 여부
+		System.out.println(vo.getSecret());
+		session.setAttribute("secret", vo.getSecret());
 		return "/board/content";
+	}
+	
+	@RequestMapping("/delete")
+	public String delete(@RequestParam("bno") int bno,
+			@RequestParam("name") String name,
+			Model model) {
+		System.out.println("삭제 영역");
+		
+		int result = service.delete(bno);
+		System.out.println("삭제 결과(성공-1, 실패-0):"+result);
+		
+		return "redirect: mypage";
+	}
+	
+	@RequestMapping("/update")
+	public String update(@RequestParam("bno") int bno, Model model) {
+		
+		// 글 수정 페이지
+		BoardVO vo = service.mycontent(bno);
+		model.addAttribute("vo", vo);
+				
+		return "/board/update";
+	}
+	
+	@RequestMapping("/updateform")
+	public String updateform(BoardVO vo, RedirectAttributes ra) {
+		
+		//수정 실행 
+		System.out.println(vo.getBno());
+		System.out.println(vo.getTopic());
+		System.out.println(vo.getContent());
+		
+		if(vo.getSecret()==null) {
+			vo.setSecret("0");
+		}
+		
+		System.out.println(vo.getSecret());
+		
+		int result = service.updateform(vo);
+		
+		if (result==1) {
+			ra.addFlashAttribute("msg", "수정이 완료되었습니다.");
+		} else {
+			ra.addFlashAttribute("msg", "수정에 실패했습니다.");
+		}
+		
+		System.out.println("수정 결과(1-성공, 0-실패): "+result);
+		
+		return "redirect: /board/content?bno="+vo.getBno();
 	}
 }

@@ -35,8 +35,8 @@
 								<div class="small mb-4">
 									<i class="fa fa-map-marker mr-2"></i>(총 게시물 수)
 									<ul>
-										<li class="list-inline-item"><i class="fa fa-heart-o mr-2"></i>200
-										Likes</li>
+										<li class="list-inline-item"><i
+											class="fa fa-heart-o mr-2"></i>200 Likes</li>
 									</ul>
 								</div>
 							</div>
@@ -52,15 +52,19 @@
 						<br>
 						<div class="row" align="center">
 							<c:forEach var="mylist" items="${mylist }">
-								<div class="col-lg-6 mb-2 pr-lg-1" style="background-color: #E4E4E4; width: 70%; height: 400px; margin: auto; line-height:400px; padding: 0;" align="center">
+								<div class="col-lg-6 mb-2 pr-lg-1"
+									style="background-color: #E4E4E4; width: 70%; height: 400px; margin: auto; margin-bottom: 10px; line-height: 400px; padding: 0;"
+									align="center">
 									<button
-								style="background-color: #E4E4E4; color: black; font-size: 20px; line-height:50px; padding: 0"
-								onclick="location.href='#'">${mylist.topic }</button><br>
-								<button
-								style="background-color: #E4E4E4; color: black; font-size: 20px; line-height:350px; padding: 0"
-								onclick="location.href='content?bno='${mylist.bno}'">${mylist.content }</button>
+										style="background-color: #E4E4E4; color: black; font-size: 20px; line-height: 50px; padding: 0">
+										글감: ${mylist.topic }</button>
+									<br>
+									<button type="button"
+										style="background-color: #E4E4E4; color: black; font-size: 20px; line-height: 350px; padding: 0"
+										onclick="location.href='${pageContext.request.contextPath}/board/content?bno=${mylist.bno}'">${mylist.content }</button>
 								</div>
-							</c:forEach> 
+								<div></div>
+							</c:forEach>
 							<!--<div class="col-lg-6 mb-2 pr-lg-1" style="background-color: #E4E4E4; width: 70%; height: 400px; margin: auto; line-height:400px; padding: 0;" align="center">
 								<button
 								style="background-color: #E4E4E4; color: black; font-size: 20px; line-height:50px; padding: 0"
@@ -68,13 +72,13 @@
 								<button
 								style="background-color: #E4E4E4; color: black; font-size: 20px; line-height:350px; padding: 0"
 								onclick="location.href='content?'">(쓴 글)</button>-->
-							</div>
 						</div>
-						
 					</div>
+
 				</div>
 			</div>
-			<!-- End profile widget -->
+</div>
+<!-- End profile widget -->
 </div>
 </div>
 </form>
@@ -82,4 +86,14 @@
 
 </div>
 </div>
+
+<script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+			var msg = '${msg}';
+			if(msg != '') {
+				alert(msg);
+			}
+		});
+</script>
 <%@include file="../include/footer.jsp"%>

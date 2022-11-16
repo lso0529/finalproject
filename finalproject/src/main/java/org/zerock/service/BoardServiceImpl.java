@@ -47,4 +47,23 @@ public class BoardServiceImpl implements BoardService {
 		
 		return mylist;
 	}
+	
+	@Override
+	public BoardVO mycontent(int bno) {
+		BoardVO vo = mapper.mycontent(bno);
+		
+		return vo;
+	}
+	
+	@Override
+	public int delete(int bno) {
+		int result = mapper.delete(bno);
+		return result;
+	}
+	
+	@Override
+	public int updateform(BoardVO vo) {
+		int result = mapper.updateform(vo);
+		return result;
+	}
 }

@@ -70,7 +70,7 @@ public class MemberController {
 		System.out.println("MemberController -> emailCheckAndfindPwPag()");
 		MemberVO resultvo = service.emailCheck(vo);
 		if(resultvo != null) {
-			session.setAttribute("email", resultvo.getEmail());
+			session.setAttribute("user_email", resultvo.getEmail());
 			return "/member/pwUpdatePage"; // 비밀번호 수정 페이지
 		}else {
 			RA.addFlashAttribute("msg", "이메일을 확인해주세요.");
@@ -83,22 +83,24 @@ public class MemberController {
 	public String pwUpdatePage(MemberVO vo, HttpSession session) throws Exception{
 		System.out.println("MemberController -> pwUpdatePage()");
 		System.out.println("pwUpdatePage = "+vo.getEmail());
-		session.setAttribute("email", vo.getEmail());
+		session.setAttribute("user_email", vo.getEmail());
 		return "/member/pwUpdatePage";
 	}
 	
 	//비밀번호 변경 
 	@RequestMapping(value = "/pwUpdate")
-	public String pwUpdate(MemberVO vo, RedirectAttributes RA)throws Exception{
+	public String pwUpdate(MemberVO vo, RedirectAttributes RA, HttpSession session)throws Exception{
 		System.out.println("MemberController -> pwUpdate()");
 		System.out.println("pwUpdate() -> "+ vo.toString());
 		int result = service.pwUpdate(vo);
 		if(result == 1) {
 			System.out.println("y");
-			return "member/login"; // 로그인 화면으로
+			session.invalidate();
+			return "member/loginPage"; // 로그인 화면으로
 		}else {
 			System.out.println("n");
-			return "member/login";
+			session.invalidate();
+			return "member/loginPage";
 		}
 	}
 	
@@ -110,5 +112,16 @@ public class MemberController {
 		return "redirect:/";
 	}
 	
-	
+	//회원정보 페이지 
+	@RequestMapping(value = "/userEditPage")
+	public String userEditPage() {
+		return "member/userEditPage";
+	}
+	//회원탈퇴 
+	@RequestMapping(value = "/deleteMember")
+	public String deleteMember(MemberVO vo ,HttpSession session) {
+		vo.setEmail((String)session.getAttribute("userEmail"));
+		System.out.println("MemberController -> deleteMember()");
+		return "member/loginPage";
+	}
 }

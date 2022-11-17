@@ -8,4 +8,5 @@ public interface MemberService {
 	public MemberVO login(MemberVO vo); 
 	public MemberVO emailCheck(MemberVO vo) throws Exception;
 	public int pwUpdate(MemberVO vo) throws Exception;
+	public int deleteMember(MemberVO vo);
 }

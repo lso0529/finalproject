@@ -4,9 +4,9 @@
     
 <%
 // 추가된 부분= session값을 다시 넣어서 밑에 스크립트 태그로 값을 넣어서 controller로 보냈습니다.
-String email= (String)session.getAttribute("email"); 
+String user_email= (String)session.getAttribute("user_email"); 
 
-session.setAttribute("email", email);
+session.setAttribute("user_email", user_email);
  %>
 
 
@@ -23,7 +23,7 @@ session.setAttribute("email", email);
     <div class="container">
        
       <form class="pwUpdate-form" action="pwUpdate" method="post" id="pwUpdate-form">
-          <input type="hidden" class="input" name="email" id="email" value="<%=email%>">
+          <input type="hidden" class="input" name="email" id="email" value="<%=user_email%>">
           <input type="password" placeholder="새비밀번호" class="input" name="pw" id="pw">
           <input type="password" placeholder="새비밀번호 확인" class="input" name="pw2" id="pw2">
           <input type="button" class="btn large loginBtn" value="변경" onclick="pwUpdate()">

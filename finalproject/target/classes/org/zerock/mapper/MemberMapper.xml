@@ -23,4 +23,7 @@
     	update members set pw = #{pw} where email = #{email}
     </update>
 	
+	<delete id="deleteMember" parameterType="org.zerock.command.MemberVO">
+		delete from members where email = #{email} and pw = #{pw}
+	</delete>
  </mapper> 

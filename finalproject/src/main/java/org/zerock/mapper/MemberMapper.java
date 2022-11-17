@@ -8,5 +8,6 @@ public interface MemberMapper {
 	public MemberVO login(MemberVO vo);
 	public MemberVO emailCheck(MemberVO vo); 
 	public int pwUpdate(MemberVO vo);
+	public int deleteMember(MemberVO vo);
 
 }

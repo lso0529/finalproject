@@ -66,4 +66,11 @@ public class BoardServiceImpl implements BoardService {
 		int result = mapper.updateform(vo);
 		return result;
 	}
+	
+	@Override
+	public int mycount(String name) {
+		int count = mapper.mycount(name);
+		
+		return count;
+	}
 }

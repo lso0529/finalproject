@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.command.BoardVO;
@@ -65,8 +66,11 @@ public class BoardController {
 		String name = "name";
 		
 		ArrayList<BoardVO> mylist = service.mylist(name);
+		int count = service.mycount(name);
 		
 		model.addAttribute("mylist", mylist);
+		model.addAttribute("mycount", count);
+		model.addAttribute("name", name);
 		
 		return "/board/mypage";
 	}
@@ -74,20 +78,21 @@ public class BoardController {
 	@RequestMapping("/regiform")
 	public String regiform(BoardVO vo, RedirectAttributes ra) {
 		
-		System.out.println(vo.getSecret());
-		System.out.println(vo.getTopic());
-		System.out.println(vo.getContent());
-		System.out.println(vo.getName());
+		System.out.println("글쓰기 메서드");
+		System.out.println("주제: "+vo.getTopic());
+		System.out.println("내용: "+vo.getContent());
+		System.out.println("이름: "+vo.getName());
 		
-		if(vo.getSecret()==null) {
+		if (vo.getSecret()==null) {
 			vo.setSecret("0");
 		}
 		
-		service.register(vo);
-		ra.addFlashAttribute("msg", "글 등록이 완료되었습니다.");
+		System.out.println("비밀글(0-공개, 1-비밀):"+vo.getSecret());
 		
-		return "redirect: /board/register_result";
-//		return "/board/mypage";
+		service.register(vo);
+		ra.addFlashAttribute("msg", "등록되었습니다.");
+		
+		return "redirect: /board/mypage";
 	}
 	
 	@RequestMapping("/register_result")

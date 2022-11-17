@@ -27,7 +27,7 @@
 							<input type="checkbox" checked>비밀글
 							<!--  <input type="checkbox" name="secret" value="1" style="width: 15px; height: 15px" readonly="readonly"> 비밀글-->
 						<% }%>
-						<textarea name="content" id="content" placeholder="${vo.content }" rows="6"></textarea>
+						<textarea name="content" id="content" rows="6">${vo.content }</textarea>
 					</div>
 					<div class="col-12">
 						<button type="button" onclick=update()>저장</button>

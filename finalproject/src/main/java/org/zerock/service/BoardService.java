@@ -14,4 +14,5 @@ public interface BoardService {
 	public BoardVO mycontent(int bno);
 	public int delete(int bno);
 	public int updateform(BoardVO vo);
+	public int mycount(String name);
 }

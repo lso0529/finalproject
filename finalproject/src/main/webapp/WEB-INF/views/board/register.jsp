@@ -9,14 +9,14 @@
 		<header>
 			<h2>"${topic }" 에 대해 글쓰기</h2>
 		</header>
-		<form action="regiform" id="regiform">
+		<form action="regiform" id="regiform" method="post">
 			<div>
 				<div class="row">
 					<div class="col-12">
 						<input type="hidden" name="topic" value="${topic }">
 						<input type="hidden" name="name" value="name">
 						<input type="checkbox" name="secret" value="1" style="width: 15px; height: 15px"> 비밀글
-						<textarea name="content" id="content" placeholder="내용을 입력하세요." rows="6"></textarea>
+						<textarea name="content" id="content" placeholder="" rows="6"></textarea>
 					</div>
 					<div class="col-12">
 						<!-- <input type="submit" value="저장" /> -->

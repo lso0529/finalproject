@@ -13,26 +13,39 @@
 	<div class="wrapper">
 		<div class="container">
 
-			<form class="findPw-form" action="emailCheckAndfindPwPage"
-				method="POST">
-				<input type="email" placeholder="이메일을 입력하세요" class="input"
-					name="email" id="email"><br /> <input type="submit"
-					class="btn large loginBtn" value="확인"> <input type="button"
-					class="btn large loginBtn" value="취소"
-					onclick="location.href='loginPage'">
+			<form class="findPw-form" action="emailCheckAndfindPwPage" method="POST" id="email_check_form">
+			
+				<input type="email" placeholder="이메일을 입력하세요" class="input"name="email" id="email">
+				<input type="button"class="btn large loginBtn" value="확인" onclick="checkEmail()"> 
+				<input type="button" class="btn large loginBtn" value="취소" onclick="location.href='loginPage'">
 
 			</form>
 
 		</div>
 	</div>
 	
-	<script type="text/javascript">
-		var msg = "${msg}";
+<script type="text/javascript">
 
-		if (msg != "") {
-			alert(msg);
-		}
-	</script>
+	var msg = "${msg}";
+	
+	if (msg != "") {
+		alert(msg);
+	}
 
+	function checkEmail() {
+		
+		
+	
+		if($("#email").val()==""){
+	        alert("이메일을 입력해주세요.");
+	        return;
+	    }else {
+	        $("#email_check_form").submit();
+	    }
+		
+	}
 
-	<%@include file="../include/footer.jsp"%>
+	
+</script>
+
+<%@include file="../include/footer.jsp"%>

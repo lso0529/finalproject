@@ -57,48 +57,55 @@ public class MemberController {
 		return "redirect:/";
 	}
 	
-	//비밀번호 찾기 이메일 입력 페이지
+	//비밀번호 찾기 - 이메일 입력 페이지
 	@RequestMapping(value = "/findPw", method = RequestMethod.GET)
 	public String findpw() throws Exception{
+		System.out.println("MemberController -> findpw()");
 		return "/member/findPw";
 	}
 	
-	//비밀번호 찾기 페이지 연결 
+	//비밀번호 찾기 - 이메일 인증 
 	@RequestMapping(value = "/emailCheckAndfindPwPage")
 	public String emailCheckAndfindPwPage(MemberVO vo, HttpSession session , RedirectAttributes RA)throws Exception{
+		System.out.println("MemberController -> emailCheckAndfindPwPag()");
 		MemberVO resultvo = service.emailCheck(vo);
 		if(resultvo != null) {
 			session.setAttribute("email", resultvo.getEmail());
-			return "/member/pwUpdatePage"; // 비밀번호 수정 
+			return "/member/pwUpdatePage"; // 비밀번호 수정 페이지
 		}else {
 			RA.addFlashAttribute("msg", "이메일을 확인해주세요.");
-			return "redirect:/"; // 로그인
+			return "redirect:/member/findPw"; // 다시 이메일 입력 페이지
 		}
 	}
-	//비밀번호 찾기 이메일 입력 페이지
+	
+	//비밀번호 찾기 새 비밀번호 입력 페이지
 	@RequestMapping(value = "/pwUpdatePage")
-	public String pwUpdatePage() throws Exception{
+	public String pwUpdatePage(MemberVO vo, HttpSession session) throws Exception{
 		System.out.println("MemberController -> pwUpdatePage()");
+		System.out.println("pwUpdatePage = "+vo.getEmail());
+		session.setAttribute("email", vo.getEmail());
 		return "/member/pwUpdatePage";
 	}
-	//비밀번호 수정 
+	
+	//비밀번호 변경 
 	@RequestMapping(value = "/pwUpdate")
-	public String pwUpdate(MemberVO vo)throws Exception{
+	public String pwUpdate(MemberVO vo, RedirectAttributes RA)throws Exception{
 		System.out.println("MemberController -> pwUpdate()");
-		System.out.println(vo.toString());
+		System.out.println("pwUpdate() -> "+ vo.toString());
 		int result = service.pwUpdate(vo);
 		if(result == 1) {
 			System.out.println("y");
-			return "redirect:/"; //메인으로
+			return "member/login"; // 로그인 화면으로
 		}else {
 			System.out.println("n");
-			return "redirect:/member/login"; //로그인 
+			return "member/login";
 		}
 	}
 	
 	//로그아웃 처리 
 	@RequestMapping("/logout")
 	public String logout(HttpSession session) {
+		System.out.println("MemberController -> logout()");
 		session.invalidate();
 		return "redirect:/";
 	}

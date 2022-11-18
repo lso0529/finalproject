@@ -1,7 +1,6 @@
 <%@include file="../include/header.jsp"%>
 <%@ page language="java" contentType="text/html; charset=Utf-8"
     pageEncoding="Utf-8"%>
-    
 <%
 // 추가된 부분= session값을 다시 넣어서 밑에 스크립트 태그로 값을 넣어서 controller로 보냈습니다.
 String user_email= (String)session.getAttribute("user_email"); 

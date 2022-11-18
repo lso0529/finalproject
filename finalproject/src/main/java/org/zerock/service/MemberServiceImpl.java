@@ -46,6 +46,7 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public int deleteMember(MemberVO vo) {
 		int result = mapper.deleteMember(vo);
+		
 		return 0;
 	}
 

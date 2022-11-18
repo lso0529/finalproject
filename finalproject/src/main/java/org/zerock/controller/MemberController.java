@@ -52,7 +52,6 @@ public class MemberController {
 		}else {
 			session.setAttribute("user_email", resultvo.getEmail());
 			session.setAttribute("user_name", resultvo.getName());
-			session.setAttribute("user_pw", resultvo.getPw());
 		}
 		return "redirect:/";
 	}
@@ -117,11 +116,19 @@ public class MemberController {
 	public String userEditPage() {
 		return "member/userEditPage";
 	}
+
+	@RequestMapping(value = "/deleteCheck")
+	public String deleteCheck() {
+		return "member/deleteCheck";
+	}
+	
 	//회원탈퇴 
 	@RequestMapping(value = "/deleteMember")
 	public String deleteMember(MemberVO vo ,HttpSession session) {
-		vo.setEmail((String)session.getAttribute("userEmail"));
+		vo.setEmail((String)session.getAttribute("user_email"));
 		System.out.println("MemberController -> deleteMember()");
+		int  result = service.deleteMember(vo);
 		return "member/loginPage";
 	}
+    
 }

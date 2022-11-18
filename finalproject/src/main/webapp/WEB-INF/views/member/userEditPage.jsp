@@ -3,6 +3,14 @@
 	pageEncoding="Utf-8"%>
 <%@include file="../include/header.jsp"%>
 
+<% 
+String user_email = (String)session.getAttribute("user_email");
+String user_name =  (String)session.getAttribute("user_name");
+
+session.setAttribute("user_email", user_email);
+
+%>
+
 <style>
 .profile-header {
 	transform: translateY(5rem);
@@ -30,9 +38,9 @@
 						<div class="media align-items-end profile-header">
 							<div class="profile mr-3"></div>
 							<div class="media-body mb-5 text-white">
-								<h4 class="mt-0 mb-0">(닉네임)</h4>
+								<h4 class="mt-0 mb-0"><%=user_name%></h4>
 								<div class="small mb-4">
-									<i class="fa fa-map-marker mr-2"></i>(이메일)
+									<i class="fa fa-map-marker mr-2"></i><%=user_email%>
 								</div>
 							</div>
 						</div>
@@ -42,7 +50,7 @@
 						<div
 							class="d-flex align-items-center justify-content-between mb-3">
 
-							<a>회원탈퇴</a>
+							<a href="deleteCheck" >회원탈퇴</a>
 							<a>비밀번호 변경 </a>
 						</div>
 					</div>
@@ -50,10 +58,11 @@
 			</div>
 			<!-- End profile widget -->
 </div>
-</div>
-</form>
-</article>
+<!-- include jQuery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+<!--  jQuery Model -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-model/0.9.1/jquery.model.min.js"></script>
 
-</div>
-</div>
+
+
 <%@include file="../include/footer.jsp"%>

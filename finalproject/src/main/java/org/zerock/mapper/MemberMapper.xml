@@ -24,6 +24,6 @@
     </update>
 	
 	<delete id="deleteMember" parameterType="org.zerock.command.MemberVO">
-		delete from members where email = #{email} and pw = #{pw}
+		delete from members where email = #{email} 
 	</delete>
  </mapper> 

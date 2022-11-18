@@ -61,7 +61,6 @@ public class BoardController {
 	
 	@RequestMapping("/mypage")
 	public String mypage(HttpSession session, Model model) {
-		
 //		String name = (String) session.getAttribute("user_name");
 		String name = "name";
 		
@@ -89,10 +88,16 @@ public class BoardController {
 		
 		System.out.println("비밀글(0-공개, 1-비밀):"+vo.getSecret());
 		
-		service.register(vo);
-		ra.addFlashAttribute("msg", "등록되었습니다.");
+		int result = service.register(vo);
+		if (result==1) {
+			System.out.println("등록 성공");
+			ra.addFlashAttribute("msg", "등록이 완료되었습니다.");
+		} else {
+			System.out.println("등록 실패");
+			ra.addFlashAttribute("msg", "등록에 실패했습니다.");
+		}
 		
-		return "redirect: /board/mypage";
+		return "redirect:/board/mypage";
 	}
 	
 	@RequestMapping("/register_result")
@@ -138,7 +143,7 @@ public class BoardController {
 	}
 	
 	@RequestMapping("/updateform")
-	public String updateform(BoardVO vo, RedirectAttributes ra) {
+	public String updateform(BoardVO vo, RedirectAttributes ra, Model model) {
 		
 		//수정 실행 
 		System.out.println(vo.getBno());
@@ -154,13 +159,15 @@ public class BoardController {
 		int result = service.updateform(vo);
 		
 		if (result==1) {
+			System.out.println("수정 성공");
 			ra.addFlashAttribute("msg", "수정이 완료되었습니다.");
 		} else {
+			System.out.println("수정 실패");
 			ra.addFlashAttribute("msg", "수정에 실패했습니다.");
 		}
 		
 		System.out.println("수정 결과(1-성공, 0-실패): "+result);
 		
-		return "redirect: /board/content?bno="+vo.getBno();
+		return "redirect:/board/content?bno="+vo.getBno();
 	}
 }

@@ -9,7 +9,7 @@
 		<header>
 			<h2>"${vo.topic }"에 쓴 글 수정</h2>
 		</header>
-		<form action="updateform" id="updateform">
+		<form action="updateform" id="updateform" method="post">
 			<div>
 				<div class="row">
 					<div class="col-12">
@@ -39,6 +39,12 @@
 </div>
 <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
 <script type="text/javascript">
+
+	var msg= '${msg}';
+	if (msg!=''){
+		alert(msg);
+	}
+	
 	function update(){
 		if ($("#content").val() == ""){
 			alert("수정할 내용을 입력해 주세요.");

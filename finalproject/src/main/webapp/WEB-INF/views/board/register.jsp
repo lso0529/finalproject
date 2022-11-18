@@ -27,7 +27,7 @@
 		</form>
 	</article>
 </div>
-<script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
+
 <script type="text/javascript">
 	function register(){
 		if ($("#content").val() == ""){

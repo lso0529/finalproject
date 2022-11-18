@@ -8,7 +8,7 @@ import org.zerock.command.TopicVO;
 public interface BoardService {
 	public ArrayList<TopicVO> topicAll();
 	public ArrayList<BoardVO> boardAll(String topic);
-	public void register(BoardVO vo);
+	public int register(BoardVO vo);
 	public TopicVO selectTopic(int tno);
 	public ArrayList<BoardVO> mylist(String name);
 	public BoardVO mycontent(int bno);

@@ -84,7 +84,5 @@
 
 </div>
 </div>
-		<script type="text/javascript">
-			var msg = '${msg}';
-		</script>
+
 <%@include file="../include/footer.jsp"%>

@@ -40,7 +40,7 @@
 	</article>
 </div>
 
-<script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
+
 <script type="text/javascript">
 	function buttonCheck(){
 		if (confirm("게시글을 삭제하시겠습니까?")){

@@ -16,7 +16,14 @@
 			<script src="${pageContext.request.contextPath}/resources/assets/js/breakpoints.min.js"></script>
 			<script src="${pageContext.request.contextPath}/resources/assets/js/util.js"></script>
 			<script src="${pageContext.request.contextPath}/resources/assets/js/main.js"></script>
-			
+			<script type="text/javascript">
+				$(document).ready(function(){
+					var msg= '${msg}';
+					if (msg!=''){
+						alert(msg);
+					}
+				});
+			</script>
 
 
 	</body>

@@ -30,8 +30,10 @@ public class BoardServiceImpl implements BoardService {
 	}
 	
 	@Override
-	public void register(BoardVO vo) {
-		mapper.register(vo);		
+	public int register(BoardVO vo) {
+		int result = mapper.register(vo);
+		
+		return result;
 	}
 	
 	@Override

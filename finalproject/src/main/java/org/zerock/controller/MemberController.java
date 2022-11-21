@@ -49,11 +49,13 @@ public class MemberController {
 		
 		if(resultvo == null) {
 			RA.addFlashAttribute("msg", "아이디 또는 패스워드를 확인해주세요.");
+			return "redirect:/member/loginPage";
 		}else {
 			session.setAttribute("user_email", resultvo.getEmail());
 			session.setAttribute("user_name", resultvo.getName());
+			return "redirect:/";
 		}
-		return "redirect:/";
+		
 	}
 	
 	//비밀번호 찾기 - 이메일 입력 페이지
@@ -91,6 +93,7 @@ public class MemberController {
 	public String pwUpdate(MemberVO vo, RedirectAttributes RA, HttpSession session)throws Exception{
 		System.out.println("MemberController -> pwUpdate()");
 		System.out.println("pwUpdate() -> "+ vo.toString());
+		vo.setEmail((String)session.getAttribute("user_email"));
 		int result = service.pwUpdate(vo);
 		if(result == 1) {
 			System.out.println("y");
@@ -127,8 +130,13 @@ public class MemberController {
 	public String deleteMember(MemberVO vo ,HttpSession session) {
 		vo.setEmail((String)session.getAttribute("user_email"));
 		System.out.println("MemberController -> deleteMember()");
-		int  result = service.deleteMember(vo);
-		return "member/loginPage";
+		int result = service.deleteMember(vo);
+		System.out.println(result);
+		if(result == 1) {
+			System.out.println("if동작");
+			session.invalidate();
+		}
+		return "redirect:/member/loginPage";
 	}
     
 }

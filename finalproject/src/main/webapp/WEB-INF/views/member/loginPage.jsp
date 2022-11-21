@@ -42,6 +42,10 @@
 	<script src="${pageContext.request.contextPath}/resources/assets/js/login.js"></script>
 		
 	<script type="text/javascript">
+	var msg = "${msg}"
+	if (msg != ""){
+		alert(msg);
+	}
 	 function signupCheck() {
    	
            if($("#signEmail").val()==""){

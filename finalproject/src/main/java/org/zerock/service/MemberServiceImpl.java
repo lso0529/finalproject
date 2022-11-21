@@ -47,7 +47,7 @@ public class MemberServiceImpl implements MemberService {
 	public int deleteMember(MemberVO vo) {
 		int result = mapper.deleteMember(vo);
 		
-		return 0;
+		return result;
 	}
 
 

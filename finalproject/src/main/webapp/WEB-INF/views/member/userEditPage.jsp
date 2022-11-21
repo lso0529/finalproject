@@ -51,7 +51,7 @@ session.setAttribute("user_email", user_email);
 							class="d-flex align-items-center justify-content-between mb-3">
 
 							<a href="deleteCheck" >회원탈퇴</a>
-							<a>비밀번호 변경 </a>
+							<a href="pwUpdatePage">비밀번호 변경 </a>
 						</div>
 					</div>
 				</div>

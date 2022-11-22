@@ -18,7 +18,7 @@
 		<section>
 			<div class="row" align="center">
 					<c:forEach var="boardlist" items="${boardlist }">
-							<div class="col-lg-6 mb-2 pr-lg-1" style="background-color: #E4E4E4; width: 70%; height: 400px; margin: auto; line-height:400px; padding: 0;" align="center">
+							<div class="col-lg-6 mb-2 pr-lg-1" style="background-color: #E4E4E4; width: 70%; height: 400px; margin: auto; margin-bottom: 10px; line-height:400px; padding: 0;" align="center">
 								<button	style="background-color: #E4E4E4; color: black; font-size: 20px">${boardlist.content }</button>
 							</div>
 					</c:forEach>

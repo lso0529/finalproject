@@ -30,8 +30,10 @@ public class BoardServiceImpl implements BoardService {
 	}
 	
 	@Override
-	public void register(BoardVO vo) {
-		mapper.register(vo);		
+	public int register(BoardVO vo) {
+		int result = mapper.register(vo);
+		
+		return result;
 	}
 	
 	@Override
@@ -46,5 +48,31 @@ public class BoardServiceImpl implements BoardService {
 		ArrayList<BoardVO> mylist = mapper.mylist(name);
 		
 		return mylist;
+	}
+	
+	@Override
+	public BoardVO mycontent(int bno) {
+		BoardVO vo = mapper.mycontent(bno);
+		
+		return vo;
+	}
+	
+	@Override
+	public int delete(int bno) {
+		int result = mapper.delete(bno);
+		return result;
+	}
+	
+	@Override
+	public int updateform(BoardVO vo) {
+		int result = mapper.updateform(vo);
+		return result;
+	}
+	
+	@Override
+	public int mycount(String name) {
+		int count = mapper.mycount(name);
+		
+		return count;
 	}
 }

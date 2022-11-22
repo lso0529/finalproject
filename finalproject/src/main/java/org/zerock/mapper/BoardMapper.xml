@@ -27,7 +27,27 @@
 	
 	<!-- 마이페이지에 뜰 글 목록 -->
 	<select id="mylist" resultType = "org.zerock.command.BoardVO">
-		select * from board where name=#{name}
+		select * from board where name=#{name} order by bno desc
+	</select>
+	
+	<!-- 마이페이지 글 클릭 시 상세 페이지로 이동 -->
+	<select id="mycontent" resultType = "org.zerock.command.BoardVO">
+		select * from board where bno=#{bno}
+	</select>
+	
+	<!-- 게시글 삭제 -->
+	<delete id="delete">
+		delete from board where bno=#{bno}
+	</delete>
+	
+	<!-- 게시글 수정 -->
+	<update id="updateform" parameterType="org.zerock.command.BoardVO">
+		update board set content=#{content}, secret=#{secret} where bno=#{bno}
+	</update>
+	
+	<!-- 내 게시물 수 -->
+	<select id="mycount" resultType="int">
+		select count(*) from board where name=#{name}
 	</select>
 	
 </mapper>

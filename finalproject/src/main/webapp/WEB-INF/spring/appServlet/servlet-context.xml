@@ -21,6 +21,19 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
+	<!-- interceptor bean 생성
+	<beans:bean id="BoardInterceptor" class="org.zerock.interceptor.BoardInterceptor"/> -->
+	<!-- interceptor 등록/설정
+	<interceptors>
+		<interceptor>
+			<mapping path="/board/*"/>
+			<exclude-mapping path="/board/list"/>
+			<exclude-mapping path="/board/content"/>
+			<exclude-mapping path="/board/topics"/>
+			<beans:ref bean="BoardInterceptor"/>
+		</interceptor>
+	</interceptors> -->
+	
 	
 	<!-- 이미지업로드 bean 생성 -->
 	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver">

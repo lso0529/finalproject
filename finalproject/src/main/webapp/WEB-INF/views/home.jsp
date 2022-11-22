@@ -10,7 +10,7 @@
 	<!-- Me -->
 	<article id="home" class="panel intro">
 		<header>
-			<h1>(홈페이지 이름)</h1>
+			<h1>울림</h1>
 			<!-- 제목 후보: 1일1글, 올림, 울림, ... -->
 			<p>하루에 한 줄, 글쓰기</p>
 		</header>

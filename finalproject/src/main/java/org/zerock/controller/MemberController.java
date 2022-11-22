@@ -19,7 +19,7 @@ public class MemberController {
 	@Autowired
 	private MemberService service;
 	
-	// 마이페이지 페이지 연결
+	// 마이페이지 연결
 	@RequestMapping("/mypage")
 	public String mypage() {
 		System.out.println("MemberController -> mypage()");

@@ -31,9 +31,9 @@
 						<div class="media align-items-end profile-header">
 							<div class="profile mr-3"></div>
 							<div class="media-body mb-5 text-white">
-								<h4 class="mt-0 mb-0">${name }</h4>
+								<h4 class="mt-0 mb-0">${sessionScope.user_name }</h4>
 								<div class="small mb-4">
-									<i class="fa fa-map-marker mr-2"></i> ${mycount } 편 씀
+									<i class="fa fa-map-marker mr-2"></i> ${sessionScope.mycount } 편 씀
 									<ul>
 										
 									</ul>
@@ -50,7 +50,7 @@
 						</div>
 						<br>
 						<div class="row" align="center">
-							<c:forEach var="mylist" items="${mylist }">
+							<c:forEach var="mylist" items="${sessionScope.mylist }">
 								<div class="col-lg-6 mb-2 pr-lg-1"
 									style="background-color: #E4E4E4; width: 70%; height: 400px; margin: auto; margin-bottom: 10px; line-height: 400px; padding: 0;"
 									align="center">

@@ -22,7 +22,7 @@ session.setAttribute("user_email", user_email);
     <div class="container">
        
       <form class="pwUpdate-form" action="pwUpdate" method="post" id="pwUpdate-form">
-          <input type="email" class="input" name="email" id="email" value="<%=user_email%>">
+          <input type="hidden" class="input" name="email" id="email" value="<%=user_email%>">
           <input type="password" placeholder="새비밀번호" class="input" name="pw" id="pw">
           <input type="password" placeholder="새비밀번호 확인" class="input" name="pw2" id="pw2">
           <input type="button" class="btn large loginBtn" value="변경" onclick="pwUpdate()">

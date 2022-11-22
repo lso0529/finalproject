@@ -24,8 +24,8 @@ System.out.println(name);%>
 					<nav id="nav">
 						<a href="${pageContext.request.contextPath}/" class="icon solid fa-home"><span>Home</span></a>
 						<a href="${pageContext.request.contextPath}/board/topics" class="icon solid fa-folder"><span>topics</span></a>
-<<<<<<< HEAD
-						<a href="${pageContext.request.contextPath}/member/mypage" class="icon solid fa-envelope"><span>mypage</span></a>
+
+						<a href="${pageContext.request.contextPath}/board/mypage" class="icon solid fa-envelope"><span>mypage</span></a>
 					<c:choose>
 					  <c:when test="${sessionScope.user_email != null}">
 						<a href="${pageContext.request.contextPath}/member/userEditPage" class="icon solid fa-user-edit"><span>user_edit</span></a>
@@ -36,10 +36,3 @@ System.out.println(name);%>
 					   </c:otherwise>
 				    </c:choose>
 					</nav>
-					
-					
-=======
-						<a href="${pageContext.request.contextPath}/board/mypage" class="icon solid fa-envelope"><span>mypage</span></a>
-						<a href="${pageContext.request.contextPath}/member/loginPage" class="icon brands fa-twitter"><span>login</span></a>
-					</nav>
->>>>>>> refs/remotes/origin/board

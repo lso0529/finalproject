@@ -61,15 +61,19 @@ public class BoardController {
 	
 	@RequestMapping("/mypage")
 	public String mypage(HttpSession session, Model model) {
-//		String name = (String) session.getAttribute("user_name");
-		String name = "name";
-		
+//		String name = "name";
+		String name = (String) session.getAttribute("user_name");
+		session.setAttribute("user_name", name);
 		ArrayList<BoardVO> mylist = service.mylist(name);
 		int count = service.mycount(name);
+		session.setAttribute("mycount", count);
+		session.setAttribute("mylist", mylist);
 		
-		model.addAttribute("mylist", mylist);
-		model.addAttribute("mycount", count);
-		model.addAttribute("name", name);
+		System.out.println("여기"+count+mylist.toString());
+		
+//		model.addAttribute("mylist", mylist);
+//		model.addAttribute("mycount", count);
+//		model.addAttribute("name", name);
 		
 		return "/board/mypage";
 	}

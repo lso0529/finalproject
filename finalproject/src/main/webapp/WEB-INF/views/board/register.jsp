@@ -14,7 +14,7 @@
 				<div class="row">
 					<div class="col-12">
 						<input type="hidden" name="topic" value="${topic }">
-						<input type="hidden" name="name" value="name">
+						<input type="hidden" name="name" value="${sessionScope.user_name }">
 						<input type="checkbox" name="secret" value="1" style="width: 15px; height: 15px"> 비밀글
 						<textarea name="content" id="content" placeholder="" rows="6"></textarea>
 					</div>

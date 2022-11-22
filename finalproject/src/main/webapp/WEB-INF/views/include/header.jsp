@@ -1,13 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=Utf-8"
     pageEncoding="Utf-8"%>
-<%//String name= (String)session.getAttribute("user_name"); 
-<<<<<<< HEAD
- // System.out.println(name);%>
+<%
+String name= (String)session.getAttribute("user_name"); 
+
+System.out.println(name);%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-=======
-//System.out.println(name);%>
+
 <!DOCTYPE html>
->>>>>>> refs/remotes/origin/board
 <html>
 	<head>
 		<title>울림 | 일상적 글쓰기</title>

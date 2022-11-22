@@ -19,7 +19,7 @@ public class MemberController {
 	@Autowired
 	private MemberService service;
 	
-	// 마이페이지 연결
+	// 마이페이지 페이지 연결
 	@RequestMapping("/mypage")
 	public String mypage() {
 		System.out.println("MemberController -> mypage()");
@@ -33,7 +33,7 @@ public class MemberController {
 		return"member/loginPage";
 	}
 	
-	// 회원가입 
+	// 회원가입 처리
 	@RequestMapping("/signUp")
 	public String signUp(MemberVO vo) {
 		System.out.println("MemberController -> signUp()");
@@ -41,7 +41,7 @@ public class MemberController {
 		return "/member/loginPage";
 	}
 	
-	// 로그인
+	// 로그인 처리 
 	@RequestMapping("login")
 	public String login(MemberVO vo, HttpSession session, RedirectAttributes RA) {
 		System.out.println("MemberController -> login()");
@@ -58,14 +58,14 @@ public class MemberController {
 		
 	}
 	
-	//비밀번호 찾기 - 이메일 입력 페이지
+	//비밀번호 찾기 - 이메일 입력 페이지 연결
 	@RequestMapping(value = "/findPw", method = RequestMethod.GET)
 	public String findpw() throws Exception{
 		System.out.println("MemberController -> findpw()");
 		return "/member/findPw";
 	}
 	
-	//비밀번호 찾기 - 이메일 인증 
+	//비밀번호 찾기 - 이메일 인증 처리
 	@RequestMapping(value = "/emailCheckAndfindPwPage")
 	public String emailCheckAndfindPwPage(MemberVO vo, HttpSession session , RedirectAttributes RA)throws Exception{
 		System.out.println("MemberController -> emailCheckAndfindPwPag()");
@@ -84,11 +84,12 @@ public class MemberController {
 	public String pwUpdatePage(MemberVO vo, HttpSession session) throws Exception{
 		System.out.println("MemberController -> pwUpdatePage()");
 		System.out.println("pwUpdatePage = "+vo.getEmail());
-		session.setAttribute("user_email", vo.getEmail());
+		
+		session.setAttribute("user_email", (String)session.getAttribute("user_email"));
 		return "/member/pwUpdatePage";
 	}
 	
-	//비밀번호 변경 
+	//비밀번호 변경 처리
 	@RequestMapping(value = "/pwUpdate")
 	public String pwUpdate(MemberVO vo, RedirectAttributes RA, HttpSession session)throws Exception{
 		System.out.println("MemberController -> pwUpdate()");
@@ -114,18 +115,19 @@ public class MemberController {
 		return "redirect:/";
 	}
 	
-	//회원정보 페이지 
+	//회원정보 페이지 연결
 	@RequestMapping(value = "/userEditPage")
 	public String userEditPage() {
 		return "member/userEditPage";
 	}
-
+	
+	// 회원탈퇴 동의 페이지 연결
 	@RequestMapping(value = "/deleteCheck")
 	public String deleteCheck() {
 		return "member/deleteCheck";
 	}
 	
-	//회원탈퇴 
+	//회원탈퇴 처리
 	@RequestMapping(value = "/deleteMember")
 	public String deleteMember(MemberVO vo ,HttpSession session) {
 		vo.setEmail((String)session.getAttribute("user_email"));

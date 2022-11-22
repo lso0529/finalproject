@@ -13,7 +13,8 @@ public class MemberServiceImpl implements MemberService {
 	
 	@Autowired
 	private MemberMapper mapper;
-
+	
+	// 회원가입
 	@Override
 	public int join(MemberVO vo) {
 		
@@ -22,7 +23,8 @@ public class MemberServiceImpl implements MemberService {
 		
 		return result;
 	}
-
+	
+	// 로그인
 	@Override
 	public MemberVO login(MemberVO vo) {
 		MemberVO resultvo = mapper.login(vo);
@@ -30,19 +32,21 @@ public class MemberServiceImpl implements MemberService {
 		return resultvo;
 	}
 
-
+	// 이메일 체크
 	@Override
 	public MemberVO emailCheck(MemberVO vo) throws Exception {
 		MemberVO resultvo = mapper.emailCheck(vo);
 		return resultvo;
 	}
-
+	
+	// 비밀번호 변경
 	@Override
 	public int pwUpdate(MemberVO vo) throws Exception {
 		int result = mapper.pwUpdate(vo);
 		return result;
 	}
-
+	
+	// 회원 탈퇴
 	@Override
 	public int deleteMember(MemberVO vo) {
 		int result = mapper.deleteMember(vo);

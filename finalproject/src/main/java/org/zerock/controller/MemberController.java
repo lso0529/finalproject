@@ -19,13 +19,6 @@ public class MemberController {
 	@Autowired
 	private MemberService service;
 	
-//	// 마이페이지 연결
-//	@RequestMapping("/mypage")
-//	public String mypage() {
-//		System.out.println("MemberController -> mypage()");
-//		return "/board/mypage";
-//	}
-	
 	// 로그인 페이지 연결
 	@RequestMapping("/loginPage")
 	public String loginPage() {
@@ -39,6 +32,14 @@ public class MemberController {
 		System.out.println("MemberController -> signUp()");
 		int result = service.join(vo);
 		return "/member/loginPage";
+	}
+	@RequestMapping("/checkName")
+	public String checkName(@RequestParam("user_name")String checkName) {
+		System.out.println("MemberController -> checkName()");
+		int result = service.checkName(checkName);
+		return "/member/loginPage";
+		
+		
 	}
 	
 	// 로그인 처리 

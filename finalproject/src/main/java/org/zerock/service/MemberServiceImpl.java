@@ -54,5 +54,11 @@ public class MemberServiceImpl implements MemberService {
 		return result;
 	}
 
+	@Override
+	public int checkName(String checkName) {
+		int result = mapper.checkName(checkName);
+		return result;
+	}
+
 
 }

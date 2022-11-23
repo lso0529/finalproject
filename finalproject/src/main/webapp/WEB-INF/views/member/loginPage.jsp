@@ -32,6 +32,7 @@
       <form class="signup-form" action="signUp" method="post" id="signup-form">
           <input type="email" placeholder="이메일" class="input" name="email" id="signEmail"><br />
           <input type="text" placeholder="닉네임" class="input" name="name" id="signName"><br />
+          <input type="button" class="btn btn-primary btn-user btn-block" value="중복체크" onclick="nameCheck()">								
           <input type="password" placeholder="패스워드" class="input" name="pw" id="signPw"><br />
           <input type="password" placeholder="패스워드 확인" class="input" name="pw2" id="signPw2"><br />
           <input type="button" class="btn large loginBtn" value="회원가입" onclick="signupCheck()"> 
@@ -77,6 +78,43 @@
                $("#login-form").submit();
            }
        }
+		function nameCheck() {
+			
+			var name = $("#name").val(); //id태그 값에 접근
+			var username= {"name":name};  //전송할 데이터의 key:value설정
+			
+			if(name.length() < 1){
+				alert("닉네임은 1글자 이상 입력하세요");	
+			}else{  //아이디 중복 체크 
+	
+				
+				//ajax문법
+				$.ajax({
+					type : "post", 		//요청형식
+					url : "checkName",	//요청할 주소
+					data : userId, 		//서버에 전송할 데이터 json형식 {key:value}
+					datatype : "text", //서버에서 요청후 리턴해 주는 타입
+					error : function(request, error){
+						alert(error + "\n" + request.status)
+					},
+					success : function(result){
+						//ajax통신에 성공했을 때에 호출될 자바스크립트 함수, 결과 여부가
+						//result매개변수로 전달됨.
+						console.log("있음(1)없음(0) 여부 : "+result);
+						
+						if(result == "1"){ //중복된 아이디가 존재함
+							alert("이미 존재하는 아이디가 있습니다.");
+						}else{
+							alert("사용가능한 아이디 입니다.");
+							$("#id").attr("readonly",true);
+							//attr(속성, 변경할 값)함수는 태그의 내부속성을 변경하는 함수
+						}
+					}
+				});
+			}//else가 끝나는 부분
+			console.log(userId);
+		}
+	 
       </script>
       
 <%@include file="../include/footer.jsp"%>

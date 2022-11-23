@@ -33,10 +33,12 @@ public class MemberController {
 		int result = service.join(vo);
 		return "/member/loginPage";
 	}
+	// 닉네임 중복체크 
 	@RequestMapping("/checkName")
-	public String checkName(@RequestParam("user_name")String checkName) {
+	public String checkName(@RequestParam("user_name") String checkName, Model model) {
 		System.out.println("MemberController -> checkName()");
 		int result = service.checkName(checkName);
+		model.addAttribute("result", result);
 		return "/member/loginPage";
 		
 		

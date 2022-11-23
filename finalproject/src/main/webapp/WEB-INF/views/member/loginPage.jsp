@@ -80,10 +80,10 @@
        }
 		function nameCheck() {
 			
-			var name = $("#name").val(); //id태그 값에 접근
-			var username= {"name":name};  //전송할 데이터의 key:value설정
+			var name = $("#signName").val(); //id태그 값에 접근
+			var user_name= {"name":name};  //전송할 데이터의 key:value설정
 			
-			if(name.length() < 1){
+			if(name.length < 1){
 				alert("닉네임은 1글자 이상 입력하세요");	
 			}else{  //아이디 중복 체크 
 	
@@ -91,8 +91,8 @@
 				//ajax문법
 				$.ajax({
 					type : "post", 		//요청형식
-					url : "checkName",	//요청할 주소
-					data : userId, 		//서버에 전송할 데이터 json형식 {key:value}
+					url : "/member/checkName",	//요청할 주소
+					data : user_name, //서버에 전송할 데이터 json형식 {key:value}
 					datatype : "text", //서버에서 요청후 리턴해 주는 타입
 					error : function(request, error){
 						alert(error + "\n" + request.status)
@@ -105,14 +105,13 @@
 						if(result == "1"){ //중복된 아이디가 존재함
 							alert("이미 존재하는 아이디가 있습니다.");
 						}else{
-							alert("사용가능한 아이디 입니다.");
-							$("#id").attr("readonly",true);
+							alert("사용가능한 닉네임 입니다.");
 							//attr(속성, 변경할 값)함수는 태그의 내부속성을 변경하는 함수
 						}
 					}
 				});
 			}//else가 끝나는 부분
-			console.log(userId);
+			console.log(user_name);
 		}
 	 
       </script>

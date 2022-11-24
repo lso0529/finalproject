@@ -10,7 +10,7 @@
 		<header>
 			<h2>글감</h2>
 		</header>
-		<p>글감을 클릭하고 (아무튼 그런 얘기)</p>
+		<p>글감을 선택하고 글을 작성해보세요.</p>
 		<section>
 			<div class="row">
 				<c:forEach var="list" items="${list }">

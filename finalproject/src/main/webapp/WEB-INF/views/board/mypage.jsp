@@ -22,7 +22,7 @@
 	<!-- Contact -->
 	<article id="contact" class="panel">
 		<header>
-			<h2>마이페이지</h2>
+			<h2>내가 쓴 글</h2>
 		</header>
 		<form action="#" method="post">
 			<div>
@@ -45,7 +45,7 @@
 					<div class="py-4 px-4">
 						<div
 							class="d-flex align-items-center justify-content-between mb-3">
-							<h5 class="mb-0">내가 쓴 글</h5>
+							<!--<h5 class="mb-0">내가 쓴 글</h5>-->
 							<p>글을 선택하면 상세보기 페이지로 넘어갑니다</p>
 						</div>
 						<br>
@@ -76,6 +76,7 @@
 				</div>
 			</div>
 </div>
+
 <!-- End profile widget -->
 </div>
 </div>

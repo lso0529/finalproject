@@ -1,4 +1,6 @@
-@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,300italic,400italic");
+/*@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,300italic,400italic"); */
+@import url("https://fonts.googleapis.com/css?family=Hi+Melody:400"); 
+
 @import url("fontawesome-all.min.css");
 
 /*
@@ -1324,8 +1326,8 @@ input, select, textarea {
 			transition: none !important;
 		}
 
-	body, input, textarea, select {
-		font-family: 'Source Sans Pro', sans-serif;
+	body, input, textarea, select, button{
+		font-family: 'Hi Melody';
 		font-weight: 300;
 		color: #777777;
 		font-size: 20pt;
@@ -1747,7 +1749,7 @@ input, select, textarea {
 			text-rendering: auto;
 			line-height: 1;
 			text-transform: none !important;
-			font-family: 'Font Awesome 5 Free';
+			font-family: 'Hi Melody';
 			font-weight: 400;
 		}
 

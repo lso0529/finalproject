@@ -69,7 +69,7 @@ public class BoardController {
 		session.setAttribute("mycount", count);
 		session.setAttribute("mylist", mylist);
 		
-		System.out.println("여기"+count+mylist.toString());
+//		System.out.println("여기"+count+mylist.toString());
 		
 //		model.addAttribute("mylist", mylist);
 //		model.addAttribute("mycount", count);

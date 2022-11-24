@@ -35,7 +35,7 @@
           <input type="button" class="btn loginBtn" value="중복체크" onclick="nameCheck()">								
           <input type="password" placeholder="패스워드" class="input" name="pw" id="signPw"><br />
           <input type="password" placeholder="패스워드 확인" class="input" name="pw2" id="signPw2"><br />
-          <input type="button" class="btn large loginBtn" value="회원가입" onclick="signupCheck()"> 
+          <input type="button" class="btn large loginBtn" value="회원가입" onclick="signupCheck()" name="sign_btn" id="sign_btn" disabled="disabled"> 
        </form>
     </div>
   </div>
@@ -48,9 +48,13 @@
 	if (msg != ""){
 		alert(msg);
 	}
+	var msg2 = 0;
 	
-	function signupCheck() {
 	
+	function signupCheck(msg2) {
+		let check = $('#sign_btn').prop('disabled');
+	    
+
 	    if($("#signEmail").val()==""){
 	        alert("이메일을 입력하세요");
 	        return;
@@ -63,9 +67,12 @@
 	    }else if($("#signPw").val() != $("#signPw2").val()){
 	        alert("비밀번호가 일치하지 않습니다.");
 	        return;
+	    }else if(msg2 == 1) {
+	    	alert("닉네임 중복체크 해주세요");
+	    	return;
 	    }else {
 	        $("#signup-form").submit();
-	    }
+    	}  
 	}
 	 
 	function loginCheck() {
@@ -107,7 +114,11 @@
 					if(result == "1"){ //중복된 아이디가 존재함
 						alert("이미 존재하는 아이디가 있습니다.");
 					}else{
+						console.log(result);
 						alert("사용가능한 닉네임 입니다.");
+						const target = document.getElementById('sign_btn');
+						target.disabled= false;	
+						return msg2 =1; 
 						//attr(속성, 변경할 값)함수는 태그의 내부속성을 변경하는 함수
 					}
 				}

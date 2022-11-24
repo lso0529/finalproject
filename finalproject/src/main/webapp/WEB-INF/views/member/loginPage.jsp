@@ -32,10 +32,11 @@
       <form class="signup-form" action="signUp" method="post" id="signup-form">
           <input type="email" placeholder="이메일" class="input" name="email" id="signEmail"><br />
           <input type="text" placeholder="닉네임" class="input" name="name" id="signName"><br />
-          <input type="button" class="btn loginBtn" value="중복체크" onclick="nameCheck()">								
+          <input type="button" class="btn loginBtn" value="중복체크" onclick="nameCheck()">
+          <input type="hidden" id="duplicateCheck" value="idUncheck">								
           <input type="password" placeholder="패스워드" class="input" name="pw" id="signPw"><br />
           <input type="password" placeholder="패스워드 확인" class="input" name="pw2" id="signPw2"><br />
-          <input type="button" class="btn large loginBtn" value="회원가입" onclick="signupCheck()" name="sign_btn" id="sign_btn" disabled="disabled"> 
+          <input type="button" class="btn large loginBtn" value="회원가입" onclick="signupCheck()" id="sign_btn"> 
        </form>
     </div>
   </div>
@@ -48,12 +49,8 @@
 	if (msg != ""){
 		alert(msg);
 	}
-	var msg2 = 0;
 	
-	
-	function signupCheck(msg2) {
-		let check = $('#sign_btn').prop('disabled');
-	    
+	function signupCheck() {
 
 	    if($("#signEmail").val()==""){
 	        alert("이메일을 입력하세요");
@@ -67,7 +64,7 @@
 	    }else if($("#signPw").val() != $("#signPw2").val()){
 	        alert("비밀번호가 일치하지 않습니다.");
 	        return;
-	    }else if(msg2 == 1) {
+	    }else if($("#duplicateCheck").val() =="idUncheck") {
 	    	alert("닉네임 중복체크 해주세요");
 	    	return;
 	    }else {
@@ -87,6 +84,7 @@
 	        $("#login-form").submit();
 	    }
 	}
+	
 	// 닉네임 유효성 검사      
 	function nameCheck() {
 		
@@ -116,9 +114,7 @@
 					}else{
 						console.log(result);
 						alert("사용가능한 닉네임 입니다.");
-						const target = document.getElementById('sign_btn');
-						target.disabled= false;	
-						return msg2 =1; 
+						$("#duplicateCheck").val("idCheck");
 						//attr(속성, 변경할 값)함수는 태그의 내부속성을 변경하는 함수
 					}
 				}
@@ -126,7 +122,7 @@
 		}//else가 끝나는 부분
 		console.log(checkName);
 	}
- 
+	
 </script>
       
 <%@include file="../include/footer.jsp"%>

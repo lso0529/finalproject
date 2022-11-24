@@ -72,7 +72,7 @@ public class MemberController {
 	//비밀번호 찾기 - 이메일 인증 처리
 	@RequestMapping(value = "/emailCheckAndfindPwPage")
 	public String emailCheckAndfindPwPage(MemberVO vo, HttpSession session , RedirectAttributes RA)throws Exception{
-		System.out.println("MemberController -> emailCheckAndfindPwPag()");
+		System.out.println("MemberController -> emailCheckAndfindPwPage()");
 		MemberVO resultvo = service.emailCheck(vo);
 		if(resultvo != null) {
 			session.setAttribute("user_email", resultvo.getEmail());
@@ -87,7 +87,7 @@ public class MemberController {
 	@RequestMapping(value = "/pwUpdatePage")
 	public String pwUpdatePage(MemberVO vo, HttpSession session) throws Exception{
 		System.out.println("MemberController -> pwUpdatePage()");
-		System.out.println("pwUpdatePage = "+vo.getEmail());
+		System.out.println("pwUpdatePage -> "+vo.getEmail());
 		
 		session.setAttribute("user_email", (String)session.getAttribute("user_email"));
 		return "/member/pwUpdatePage";

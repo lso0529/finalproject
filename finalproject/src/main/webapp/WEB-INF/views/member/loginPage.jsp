@@ -32,7 +32,7 @@
       <form class="signup-form" action="signUp" method="post" id="signup-form">
           <input type="email" placeholder="이메일" class="input" name="email" id="signEmail"><br />
           <input type="text" placeholder="닉네임" class="input" name="name" id="signName"><br />
-          <input type="button" class="btn btn-primary btn-user btn-block" value="중복체크" onclick="nameCheck()">								
+          <input type="button" class="btn loginBtn" value="중복체크" onclick="nameCheck()">								
           <input type="password" placeholder="패스워드" class="input" name="pw" id="signPw"><br />
           <input type="password" placeholder="패스워드 확인" class="input" name="pw2" id="signPw2"><br />
           <input type="button" class="btn large loginBtn" value="회원가입" onclick="signupCheck()"> 

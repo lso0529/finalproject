@@ -24,7 +24,7 @@
     </update>
     
      <select id="checkName" resultType="int">
-		select count(*) as result from member where name = #{name}
+		select count(*) as result from members where name = #{name}
 	</select>
 	
 	<delete id="deleteMember" parameterType="org.zerock.command.MemberVO" >

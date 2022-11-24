@@ -35,13 +35,11 @@ public class MemberController {
 	}
 	// 닉네임 중복체크 
 	@RequestMapping("/checkName")
-	public String checkName(@RequestParam("user_name") String checkName, Model model) {
+	public String checkName(@RequestParam("checkName") String checkName, Model model) {
 		System.out.println("MemberController -> checkName()");
 		int result = service.checkName(checkName);
 		model.addAttribute("result", result);
 		return "/member/loginPage";
-		
-		
 	}
 	
 	// 로그인 처리 
@@ -82,7 +80,7 @@ public class MemberController {
 		}
 	}
 	
-	//비밀번호 찾기 새 비밀번호 입력 페이지
+	//비밀번호 찾기 - 새 비밀번호 입력 페이지
 	@RequestMapping(value = "/pwUpdatePage")
 	public String pwUpdatePage(MemberVO vo, HttpSession session) throws Exception{
 		System.out.println("MemberController -> pwUpdatePage()");
@@ -124,7 +122,7 @@ public class MemberController {
 		return "member/userEditPage";
 	}
 	
-	// 회원탈퇴 동의 페이지 연결
+	//회원탈퇴 동의 페이지 연결
 	@RequestMapping(value = "/deleteCheck")
 	public String deleteCheck() {
 		return "member/deleteCheck";

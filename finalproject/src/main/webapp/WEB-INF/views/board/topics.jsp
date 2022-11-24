@@ -16,7 +16,7 @@
 				<c:forEach var="list" items="${list }">
 					<div class="col-4 col-6-medium col-12-small">
 						<div
-							style="width: 233.328px; height: 174.984; background-color: #E4E4E4; line-height: 174.984px"
+							style="width: 100%; height: 174.984; background-color: #E4E4E4; line-height: 174.984px"
 							align="center">
 							<button
 								style="background-color: #E4E4E4; color: black; font-size: 20px"

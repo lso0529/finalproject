@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.command.MemberVO;
 import org.zerock.service.MemberService;
@@ -33,13 +34,15 @@ public class MemberController {
 		int result = service.join(vo);
 		return "/member/loginPage";
 	}
+	
 	// 닉네임 중복체크 
+	@ResponseBody
 	@RequestMapping("/checkName")
-	public String checkName(@RequestParam("checkName") String checkName, Model model) {
+	public String checkName(@RequestParam("checkName") String checkName) {
 		System.out.println("MemberController -> checkName()");
-		int result = service.checkName(checkName);
-		model.addAttribute("result", result);
-		return "/member/loginPage";
+		String result = Integer.toString(service.checkName(checkName));
+		
+		return result;
 	}
 	
 	// 로그인 처리 

@@ -29,7 +29,7 @@ session.setAttribute("user_email", user_email);
 	<!-- Contact -->
 	<article id="contact" class="panel">
 		<header>
-			<h2>회원정보</h2>
+			<h2 style="font-size: 50px">회원정보</h2>
 		</header>
 		<form action="#" method="post">
 			<div>
@@ -37,10 +37,10 @@ session.setAttribute("user_email", user_email);
 					<div class="px-4 pt-0 pb-4 bg-dark">
 						<div class="media align-items-end profile-header">
 							<div class="profile mr-3"></div>
-							<div class="media-body mb-5 text-white">
-								<h4 class="mt-0 mb-0"><%=user_name%></h4>
-								<div class="small mb-4">
-									<i class="fa fa-map-marker mr-2"></i><%=user_email%>
+							<div class="media-body mb-5 text-white" style="font-size: 25px">
+								<h4 style="font-size: 25px" class="mt-0 mb-0"><%=user_name%></h4>
+								<div class="small mb-4" style="font-size: 25px">
+									<i style="font-size: 25px" class="fa fa-map-marker mr-2"></i><%=user_email%>
 								</div>
 							</div>
 						</div>
@@ -49,9 +49,9 @@ session.setAttribute("user_email", user_email);
 					<div class="py-4 px-4">
 						<div
 							class="d-flex align-items-center justify-content-between mb-3">
-
-							<a href="deleteCheck" >회원탈퇴</a>
-							<a href="pwUpdatePage">비밀번호 변경 </a>
+							<br>
+							<a style="font-size: 25px" href="deleteCheck" >회원탈퇴</a>
+							<a style="font-size: 25px" href="pwUpdatePage">비밀번호 변경 </a>
 						</div>
 					</div>
 				</div>

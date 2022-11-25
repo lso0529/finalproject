@@ -23,7 +23,7 @@
 	
 	<!-- interceptor bean 생성-->
 	<beans:bean id="BoardInterceptor" class="org.zerock.interceptor.BoardInterceptor"/> 
-	<!-- interceptor 등록/설정-->
+	<!-- interceptor 등록/설정 -->
 	<interceptors>
 		<interceptor>
 			<mapping path="/board/*"/>

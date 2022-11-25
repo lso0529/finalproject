@@ -7,7 +7,7 @@
 	<!-- Contact -->
 	<article id="contact" class="panel">
 		<header>
-			<h2>"${vo.topic }"에 쓴 글 수정</h2>
+			<h2 style="font-size: 50px">"${vo.topic }"에 쓴 글 수정</h2>
 		</header>
 		<form action="updateform" id="updateform" method="post">
 			<div>
@@ -27,10 +27,11 @@
 							<input type="checkbox" checked>비밀글
 							<!--  <input type="checkbox" name="secret" value="1" style="width: 15px; height: 15px" readonly="readonly"> 비밀글-->
 						<% }%>
-						<textarea name="content" id="content" rows="6">${vo.content }</textarea>
+						<textarea name="content" style="font-size: 25px" id="content" rows="6">${vo.content }</textarea>
 					</div>
 					<div class="col-12">
-						<button type="button" onclick=update()>저장</button>
+						<button type="button" style = "font-size: 20px; height: 50px; width: 130px; line-height: 25px" onclick=update()>저장</button>
+						<button type="button" style = "font-size: 20px; height: 50px; width: 130px; line-height: 25px" onclick="location.href='content?bno=${vo.bno}'">취소</button>
 					</div>
 				</div>
 			</div>

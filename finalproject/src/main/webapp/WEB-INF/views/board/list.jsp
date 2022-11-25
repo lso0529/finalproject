@@ -8,18 +8,18 @@
 	<!-- Work -->
 	<article id="work" class="panel">
 		<header>
-			<h2>${topic }</h2>
+			<h2 style="font-size: 50px">${topic }</h2>
 		</header>
-		<p>
+		<p style="font-size: 25px">
 			"${topic }"에 대한 다른 사람들의 이야기를 들어보세요.<br>
-			<button style = "" onclick="location.href='register?topic=${topic}'">글쓰기</button>
+			<button style = "font-size: 20px; height: 50px; width: 130px; line-height: 25px" onclick="location.href='register?topic=${topic}'">글쓰기</button>
 		</p>
 		
 		<section>
 			<div class="row" align="center">
 					<c:forEach var="boardlist" items="${boardlist }">
 							<div class="col-lg-6 mb-2 pr-lg-1" style="background-color: #E4E4E4; width: 70%; height: 400px; margin: auto; margin-bottom: 10px; line-height:400px; padding: 0;" align="center">
-								<button	style="background-color: #E4E4E4; color: black; font-size: 20px">${boardlist.content }</button>
+								<button	style="background-color: #E4E4E4; color: black; font-size: 25px">${boardlist.content }</button>
 							</div>
 					</c:forEach>
 			</div>

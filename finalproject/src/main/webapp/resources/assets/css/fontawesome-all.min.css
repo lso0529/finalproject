@@ -6074,7 +6074,7 @@ to {
 }
 
 @font-face {
-	font-family: "Font Awesome 5 Brands";
+	font-family: "Hi Melody";
 	font-style: normal;
 	font-weight: 400;
 	font-display: block;
@@ -6083,15 +6083,16 @@ to {
 		format("embedded-opentype"), url(../webfonts/fa-brands-400.woff2)
 		format("woff2"), url(../webfonts/fa-brands-400.woff) format("woff"),
 		url(../webfonts/fa-brands-400.ttf) format("truetype"),
-		url(../webfonts/fa-brands-400.svg#fontawesome) format("svg")
+		url(../webfonts/fa-brands-400.svg#fontawesome) format("svg")   
+		
 }
 
 .fab {
-	font-family: "Font Awesome 5 Brands"
+	font-family: "Hi Melody"
 }
 
 @font-face {
-	font-family: "Font Awesome 5 Free";
+	font-family: "Hi Melody";
 	font-style: normal;
 	font-weight: 400;
 	font-display: block;
@@ -6100,7 +6101,9 @@ to {
 		format("embedded-opentype"), url(../webfonts/fa-regular-400.woff2)
 		format("woff2"), url(../webfonts/fa-regular-400.woff) format("woff"),
 		url(../webfonts/fa-regular-400.ttf) format("truetype"),
-		url(../webfonts/fa-regular-400.svg#fontawesome) format("svg")
+		url(../webfonts/fa-regular-400.svg#fontawesome) format("svg")  
+		
+	
 }
 
 .fab, .far {
@@ -6108,7 +6111,7 @@ to {
 }
 
 @font-face {
-	font-family: "Font Awesome 5 Free";
+	font-family: "Hi Melody";
 	font-style: normal;
 	font-weight: 900;
 	font-display: block;
@@ -6117,11 +6120,15 @@ to {
 		format("embedded-opentype"), url(../webfonts/fa-solid-900.woff2)
 		format("woff2"), url(../webfonts/fa-solid-900.woff) format("woff"),
 		url(../webfonts/fa-solid-900.ttf) format("truetype"),
-		url(../webfonts/fa-solid-900.svg#fontawesome) format("svg")
+		url(../webfonts/fa-solid-900.svg#fontawesome) format("svg")   
+		
+	
+
+
 }
 
 .fa, .far, .fas {
-	font-family: "Font Awesome 5 Free"
+	font-family: "Hi Melody"
 }
 
 .fa, .fas {

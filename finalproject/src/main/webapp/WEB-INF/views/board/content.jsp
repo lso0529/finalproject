@@ -7,7 +7,7 @@
 	<!-- Contact -->
 	<article id="contact" class="panel">
 		<header>
-			<h2>"${vo.topic }"에 대한 ${vo.name}의 생각</h2>
+			<h2 style="font-size: 50px">"${vo.topic }"에 대한 ${vo.name}의 생각</h2>
 		</header>
 		<form action="delete" method="post" id="delete">
 			<div>
@@ -27,12 +27,12 @@
 							<input type="checkbox" checked onClick="return false;">비밀글
 							<!--  <input type="checkbox" name="secret" value="1" style="width: 15px; height: 15px" readonly="readonly"> 비밀글-->
 						<% }%>
-						<textarea name="content" placeholder="${vo.content }" rows="6" readonly="readonly"></textarea>
+						<textarea name="content" style="font-size: 25px" placeholder="${vo.content }" rows="6" readonly="readonly"></textarea>
 					</div>
 					<div class="col-12">
-						<button type="button" onclick="location.href='update?bno=${vo.bno}'">수정</button>
-						<button type="button" onclick=buttonCheck()>삭제</button>
-						<button type="button" onclick="location.href='mypage?name=${vo.name}'">취소</button>
+						<button type="button" style = "font-size: 20px; height: 50px; width: 130px; line-height: 25px" onclick="location.href='update?bno=${vo.bno}'">수정</button>
+						<button type="button" style = "font-size: 20px; height: 50px; width: 130px; line-height: 25px" onclick=buttonCheck()>삭제</button>
+						<button type="button" style = "font-size: 20px; height: 50px; width: 130px; line-height: 25px" onclick="location.href='mypage?name=${vo.name}'">취소</button>
 					</div>
 				</div>
 			</div>

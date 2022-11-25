@@ -9,6 +9,8 @@ System.out.println(name);%>
 <!DOCTYPE html>
 <html>
 	<head>
+		
+		
 		<title>울림 | 일상적 글쓰기</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
@@ -22,17 +24,17 @@ System.out.println(name);%>
 
 				<!-- Nav -->
 					<nav id="nav">
-						<a href="${pageContext.request.contextPath}/" class="icon solid fa-home"><span>Home</span></a>
-						<a href="${pageContext.request.contextPath}/board/topics" class="icon solid fa-folder"><span>topics</span></a>
+						<a href="${pageContext.request.contextPath}/" class="icon solid fa-home"><span style="font-size: 20px">Home</span></a>
+						<a href="${pageContext.request.contextPath}/board/topics" class="icon solid fa-folder"><span style="font-size: 20px">topics</span></a>
 
-						<a href="${pageContext.request.contextPath}/board/mypage" class="icon solid fa-envelope"><span>mypage</span></a>
+						<a href="${pageContext.request.contextPath}/board/mypage" class="icon solid fa-envelope"><span style="font-size: 20px">mypage</span></a>
 					<c:choose>
 					  <c:when test="${sessionScope.user_email != null}">
-						<a href="${pageContext.request.contextPath}/member/userEditPage" class="icon solid fa-user-edit"><span>user_edit</span></a>
-						<a href="${pageContext.request.contextPath}/member/logout" class="icon solid fa-sign-out-alt"><span>logout</span><a>
+						<a href="${pageContext.request.contextPath}/member/userEditPage" class="icon solid fa-user-edit"><span style="font-size: 20px">user_edit</span></a>
+						<a href="${pageContext.request.contextPath}/member/logout" class="icon solid fa-sign-out-alt"><span style="font-size: 20px">logout</span></a>
 					  </c:when>
 					   <c:otherwise>
-					    <a href="${pageContext.request.contextPath}/member/loginPage" class="icon solid fa-user"><span>login</span></a>
+					    <a href="${pageContext.request.contextPath}/member/loginPage" class="icon solid fa-user"><span style="font-size: 20px">login</span></a>
 					   </c:otherwise>
 				    </c:choose>
 					</nav>

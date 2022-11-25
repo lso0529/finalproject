@@ -25,18 +25,22 @@
       <form class="login-form" action="login" method="post" id="login-form">
           <input type="email" placeholder="이메일" class="input" name="email" id="loginEmail"><br />
           <input type="password" placeholder="패스워드" class="input" name="pw" id="loginPw"><br />
-          <input type="button" class="btn large loginBtn" value="로그인" onclick="loginCheck()"> 
-          <span><a style="font-size: 12" href="findPw">비밀번호 찾기</a></span>
+          <input type="button" class="btn loginBtn" value="로그인" onclick="loginCheck()"> 
+          <span><a style="font-size: 8;" href="findPw">비밀번호 찾기</a></span>
        </form>
        
       <form class="signup-form" action="signUp" method="post" id="signup-form">
           <input type="email" placeholder="이메일" class="input" name="email" id="signEmail"><br />
+          <input type="button" class="btn" value="이메일 중복 체크" onclick="eamilCheck()">
+          
           <input type="text" placeholder="닉네임" class="input" name="name" id="signName"><br />
-          <input type="button" class="btn loginBtn" value="중복체크" onclick="nameCheck()">
+          <input type="button" class="btn loginBtn" value="닉네임 중복 체크" onclick="nameCheck()">
           <input type="hidden" id="duplicateCheck" value="idUncheck">								
+          
           <input type="password" placeholder="패스워드" class="input" name="pw" id="signPw"><br />
           <input type="password" placeholder="패스워드 확인" class="input" name="pw2" id="signPw2"><br />
-          <input type="button" class="btn large loginBtn" value="회원가입" onclick="signupCheck()" id="sign_btn"> 
+          
+          <input type="button" class="btn signupBtn" value="회원가입" onclick="signupCheck()" id="sign_btn"> 
        </form>
     </div>
   </div>
@@ -85,7 +89,7 @@
 	    }
 	}
 	
-	// 닉네임 유효성 검사      
+	// 닉네임 중복 검사      
 	function nameCheck() {
 		
 		var name = $("#signName").val(); //id태그 값에 접근
@@ -121,6 +125,11 @@
 			});
 		}//else가 끝나는 부분
 		console.log(checkName);
+	}
+	
+	// 이메일 중복 검사
+	function emailCheck(){
+		
 	}
 	
 </script>

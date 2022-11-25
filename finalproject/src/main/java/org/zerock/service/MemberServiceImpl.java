@@ -60,6 +60,12 @@ public class MemberServiceImpl implements MemberService {
 		int result = mapper.checkName(checkName);
 		return result;
 	}
+    //이메일 확인 
+	@Override
+	public int checkEmail(String checkEmail) {
+		int result = mapper.checkEmail(checkEmail);
+		return result;
+	}
 
 
 }

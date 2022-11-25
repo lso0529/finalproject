@@ -12,6 +12,6 @@ public class BoardVO {
 	private String name;
 	private String topic;
 	private String content;
-	private String voca;
 	private String secret;
+	private int likes;
 }

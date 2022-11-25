@@ -32,8 +32,8 @@
 						<div class="media-body mb-5 text-white">
 							<!-- <h4 class="mt-0 mb-0">${sessionScope.user_name }</h4> -->
 							<div class="small mb-4" style="font-size: 25px">
-								<i style="font-size: 25px" class="fa fa-map-marker mr-2"></i> ${sessionScope.mycount } 편
-								씀
+								<i style="font-size: 25px" class="fa fa-map-marker mr-2"></i> ${sessionScope.mycount } 편<br>
+								<i style="font-size: 25px" class="fa fa-map-marker mr-2"></i> 좋아요 ${sessionScope.mylike } 개
 								<ul>
 
 								</ul>
@@ -61,6 +61,7 @@
 									style="background-color: #E4E4E4; color: black; width: 100%; height: 100%; height: 80%; line-height: 80%; font-size: 25px;"
 									onclick="location.href='${pageContext.request.contextPath}/board/content?bno=${mylist.bno}'">${mylist.content }</button>
 							</div>
+							
 							<ul>
 							</ul>
 						</c:forEach>

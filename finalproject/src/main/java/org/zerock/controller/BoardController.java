@@ -2,7 +2,13 @@ package org.zerock.controller;
 
 import java.util.ArrayList;
 
+import javax.security.auth.message.callback.PrivateKeyCallback.Request;
+import javax.servlet.ServletResponse;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.xml.ws.Response;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -66,8 +72,13 @@ public class BoardController {
 		session.setAttribute("user_name", name);
 		ArrayList<BoardVO> mylist = service.mylist(name);
 		int count = service.mycount(name);
+		
+		//받은 좋아요 수 가져오기
+		int mylike = service.mylike(name);
+		
 		session.setAttribute("mycount", count);
 		session.setAttribute("mylist", mylist);
+		session.setAttribute("mylike", mylike);
 		
 //		System.out.println("여기"+count+mylist.toString());
 		
@@ -173,5 +184,40 @@ public class BoardController {
 		System.out.println("수정 결과(1-성공, 0-실패): "+result);
 		
 		return "redirect:/board/content?bno="+vo.getBno();
+	}
+	
+	@RequestMapping("/like")
+	public String like(HttpServletRequest request, HttpServletResponse response, @RequestParam("bno") int bno) {
+		System.out.println(bno);
+		System.out.println("좋아요 컨트롤러 영역");
+		
+		//좋아요 총 수 가져오기
+		int total = service.liketotal(bno);
+		
+		Cookie[] cookies = request.getCookies();
+		
+		for (int i=0; i<cookies.length; i++) {
+			System.out.println(cookies[i].getName()+" : "+cookies[i].getValue());
+			if(cookies[i].getValue().equals("like"+bno)) {
+				//좋아요 쿠키가 있는 경우(좋아요 1 down)
+				System.out.println("좋아요 이미 있음");
+				int like2 = total-1;
+				service.likedown(like2, bno);
+				
+				//쿠키 지우는  함수 찾아보기
+				
+				return "";
+			}
+		}
+		
+		//좋아요 쿠키가 없는 경우(좋아요 1 up)
+		System.out.println("좋아요 처리");
+		int like1 = total+1;
+		service.likeup(like1, bno);
+		Cookie like = new Cookie("like"+bno, "like"+bno);
+		like.setMaxAge(86400);	
+		response.addCookie(like);
+		
+		return "";
 	}
 }

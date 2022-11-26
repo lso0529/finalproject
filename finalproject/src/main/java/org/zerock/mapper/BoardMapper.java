@@ -15,4 +15,8 @@ public interface BoardMapper {
 	public int delete(int bno);
 	public int updateform(BoardVO vo);
 	public int mycount(String name);
+	public void likeup(int like1, int bno);
+	public void likedown(int like2, int bno);
+	public int liketotal(int bno);
+	public int mylike(String name);
 }

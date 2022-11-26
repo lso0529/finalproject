@@ -75,4 +75,27 @@ public class BoardServiceImpl implements BoardService {
 		
 		return count;
 	}
+	
+	@Override
+	public void likeup(int like1, int bno) {
+		mapper.likeup(like1, bno);		
+	}
+	
+	@Override
+	public void likedown(int like2, int bno) {
+		mapper.likedown(like2, bno);
+		
+	}
+	
+	@Override
+	public int liketotal(int bno) {
+		int total = mapper.liketotal(bno);
+		return total;
+	}
+	
+	@Override
+	public int mylike(String name) {
+		int result = mapper.mylike(name);
+		return result;
+	}
 }

@@ -3,10 +3,6 @@
     
     
     <wb-module deploy-name="controller-1.0.0-BUILD-SNAPSHOT">
-                                
-        
-        
-        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
                         		
         
         
@@ -21,6 +17,7 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
                 
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/target/generated-sources/annotations"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/target/generated-test-sources/test-annotations"/>
                         		
         
         

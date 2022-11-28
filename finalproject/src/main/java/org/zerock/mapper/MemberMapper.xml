@@ -27,6 +27,10 @@
 		select count(*) as result from members where name = #{name}
 	</select>
 	
+	 <select id="checkEmail" resultType="int">
+		select count(*) as result from members where email = #{email}
+	</select>
+	
 	<delete id="deleteMember" parameterType="org.zerock.command.MemberVO" >
 		delete from members where email = #{email} 
 	</delete>

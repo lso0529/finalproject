@@ -1,10 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< HEAD
 Built-By: JGD
 Build-Jdk: 11.0.16.1
-=======
-Built-By: tjoeun
-Build-Jdk: 1.8.0_333
->>>>>>> branch 'main3' of https://github.com/lso0529/finalproject.git
 Created-By: Maven Integration for Eclipse
 

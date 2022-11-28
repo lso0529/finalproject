@@ -9,5 +9,6 @@ public interface MemberService {
 	public MemberVO emailCheck(MemberVO vo) throws Exception;	// 이메일 체크
 	public int pwUpdate(MemberVO vo) throws Exception;			// 비밀번호 변경
 	public int deleteMember(MemberVO vo);						// 회원 탈퇴
-	public int checkName(String checkName);                     // 닉네임 확인
+	public int checkName(String checkName);                     // 닉네임 중복확인
+	public int checkEmail(String checkEmail);                   // 이메일 중복확인
 }

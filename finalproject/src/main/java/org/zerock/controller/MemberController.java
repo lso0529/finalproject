@@ -35,6 +35,16 @@ public class MemberController {
 		return "/member/loginPage";
 	}
 	
+	//아이디 중복체크 
+	@ResponseBody
+	@RequestMapping("/checkEmail")
+	public String checkEmail(@RequestParam("checkEmail") String checkEmail) {
+		System.out.println("MemberController -> checkEmail()");
+		String result = Integer.toString(service.checkEmail(checkEmail));
+		
+		return result;
+	}
+	
 	// 닉네임 중복체크 
 	@ResponseBody
 	@RequestMapping("/checkName")

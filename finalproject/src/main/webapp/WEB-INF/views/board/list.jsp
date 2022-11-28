@@ -24,7 +24,7 @@
 						style="background-color: #E4E4E4; width: 70%; height: 400px; margin: auto; margin-bottom: 10px; line-height: 400px; padding: 0;"
 						align="center">
 						<button
-							style="background-color: #E4E4E4; color: black; font-size: 25px">${boardlist.content }</button>
+							style="background-color: #E4E4E4; color: black; font-size: 25px" onclick="location.href='listcontent?bno=${boardlist.bno}'">${boardlist.content }</button>
 
 					</div>
 					<div align="center" style="padding: 0; line-height: 400px">
@@ -46,9 +46,9 @@
 		}
 			
 	    $.ajax({
-	        type : "GET",
-	        url : "http://localhost:8080/board/like?bno="+bno,
-	        //contentType: "application/json",
+	        type : "POST",
+	        url : "http://localhost:8080/board/like?bno="+bno+"&&name="+name,
+	        contentType: "application/json",
 	        dataType: "text",
 	        error : function (status) {
 		          alert(status + "error!");

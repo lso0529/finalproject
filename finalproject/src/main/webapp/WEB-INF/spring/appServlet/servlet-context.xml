@@ -30,6 +30,8 @@
 			<exclude-mapping path="/board/list"/>
 			<exclude-mapping path="/board/content"/>
 			<exclude-mapping path="/board/topics"/>
+			<exclude-mapping path="/board/listcontent"/>
+			<exclude-mapping path="/board/{bno}"/>
 			<beans:ref bean="BoardInterceptor"/>
 		</interceptor>
 	</interceptors> 

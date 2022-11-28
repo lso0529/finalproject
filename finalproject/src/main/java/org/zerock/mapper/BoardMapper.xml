@@ -51,22 +51,28 @@
 	</select>
 	
 	<!-- 좋아요 올리기 -->
-	<update id="likeup" parameterType="int">
-		update board set likes=#{param1} where bno=#{param2}
-	</update>
+	<insert id="likeup">
+		insert into likes (bno , name, likecount)
+		values(#{param1},#{param2},1)
+	</insert>
 	
 	<!-- 좋아요 내리기 -->
-	<update id="likedown" parameterType="int">
-		update board set likes=#{param1} where bno=#{param2}
-	</update>
+	  <delete id="likedown">
+	  	delete from likes where bno = #{param1} and name = #{param2} 
+	  </delete>
 	
 	<!-- 게시물별 좋아요 수 가져오기 -->
-	<select id="liketotal" resultType="int">
-		select likes from board where bno=#{bno}
+	<select id="liketotal" resultType="Integer">
+		select sum(LIKECOUNT) from likes where bno=#{bno}
 	</select>
 	
 	<!-- 내 좋아요 수 총계 출력 -->
-	<select id="mylike" resultType="int">
+	<select id="mylike" resultType="Integer">
 		select sum(likes) from board where name=#{name}
+	</select>
+	
+	<!-- 좋아요 여부 -->
+	<select id="findLike" resultType="Integer">
+		select count(*) from likes where bno = #{param1} and name = #{param2}
 	</select>
 </mapper>

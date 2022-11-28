@@ -3,8 +3,10 @@ package org.zerock.service;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.zerock.command.BoardVO;
+import org.zerock.command.LikeVO;
 import org.zerock.command.TopicVO;
 import org.zerock.mapper.BoardMapper;
 
@@ -77,25 +79,32 @@ public class BoardServiceImpl implements BoardService {
 	}
 	
 	@Override
-	public void likeup(int like1, int bno) {
-		mapper.likeup(like1, bno);		
-	}
-	
-	@Override
-	public void likedown(int like2, int bno) {
-		mapper.likedown(like2, bno);
-		
-	}
-	
-	@Override
-	public int liketotal(int bno) {
-		int total = mapper.liketotal(bno);
+	public Integer liketotal(int bno) {
+		Integer total = mapper.liketotal(bno);
 		return total;
 	}
 	
 	@Override
-	public int mylike(String name) {
-		int result = mapper.mylike(name);
+	public Integer mylike(String name) {
+		System.out.println("서비스 부분");
+		Integer result = (Integer) mapper.mylike(name);
 		return result;
+	}
+	
+	@Override
+	public Integer findLike(int bno, String name) {
+		Integer findlike = mapper.findLike(bno, name);
+		return findlike;
+	}
+	
+	@Override
+	public void likeup(int bno, String name) {
+		mapper.likeup(bno, name);
+		
+	}
+	
+	@Override
+	public void likedown(int bno, String name) {
+		mapper.likedown(bno, name);		
 	}
 }

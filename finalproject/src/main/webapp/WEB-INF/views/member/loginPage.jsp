@@ -11,6 +11,10 @@
   	button.loginBtn{
   		vertical-align:middle;
   	}
+  	html{
+  		font-family: 'Hi Melody';,
+  		font-size: 22px;
+  	}
   	</style>
 </head>
 <body>
@@ -25,22 +29,27 @@
       <form class="login-form" action="login" method="post" id="login-form">
           <input type="email" placeholder="이메일" class="input" name="email" id="loginEmail"><br />
           <input type="password" placeholder="패스워드" class="input" name="pw" id="loginPw"><br />
-          <input type="button" class="btn loginBtn" value="로그인" onclick="loginCheck()"> 
+          <input type="button" class="btn loginBtn" value="로그인" onclick="loginCheck()" style="padding: 0px"> 
+           <font  style = "font-family: Hi Melody"> </font>
           <span><a style="font-size: 8;" href="findPw">비밀번호 찾기</a></span>
        </form>
        
       <form class="signup-form" action="signUp" method="post" id="signup-form">
           <input type="email" placeholder="이메일" class="input" name="email" id="signEmail"><br />
-          <input type="button" class="btn" value="이메일 중복 체크" onclick="emailCheck()">
+           <font id = "checkEmail2" size = "3"></font>
+          
+          <!--<input type="button" class="btn" value="이메일 중복 체크" onclick="emailCheck()"> -->
           
           <input type="text" placeholder="닉네임" class="input" name="name" id="signName"><br />
-          <input type="button" class="btn loginBtn" value="닉네임 중복 체크" onclick="nameCheck()">
+          <font id = "checkNickName" size = "3"></font>
+          <!-- <input type="button" class="btn loginBtn" value="닉네임 중복 체크" onclick="nameCheck()"> -->
           <input type="hidden" id="duplicateCheck" value="idUncheck">								
           
           <input type="password" placeholder="패스워드" class="input" name="pw" id="signPw"><br />
           <input type="password" placeholder="패스워드 확인" class="input" name="pw2" id="signPw2"><br />
           
-          <input type="button" class="btn signupBtn" value="회원가입" onclick="signupCheck()" id="sign_btn"> 
+          <input type="button" class="btn signupBtn" value="회원가입" onclick="signupCheck()" id="sign_btn" style="padding: 0px"> 
+      	  <font  id="sign_btn" style = "font-family: Hi Melody"> </font>
        </form>
     </div>
   </div>
@@ -72,9 +81,6 @@
 	    }else if($("#signPw").val() != $("#signPw2").val()){
 	        alert("비밀번호가 일치하지 않습니다.");    
 	        return;
-	    }else if($("#duplicateCheck").val() =="idUncheck") {
-	    	alert("닉네임 중복체크 해주세요");
-	    	return;
 	    }else {
 	        $("#signup-form").submit();
     	}  
@@ -94,7 +100,7 @@
 	}
 	
 	// 닉네임 중복 검사      
-	function nameCheck() {
+	$("#signName").focusout(function nameCheck() {
 		
 		var name = $("#signName").val(); //id태그 값에 접근
 		var checkName= {"checkName":name};  //전송할 데이터의 key:value설정
@@ -106,6 +112,7 @@
 			alert("닉네임은 _를 제외한 특수문자를 포함 할 수 없습니다");	
 		}else{  //아이디 중복 체크 
 	
+			//ajax문법
 			//ajax문법
 			$.ajax({
 				type : "post", 		//요청형식
@@ -120,22 +127,27 @@
 					//result매개변수로 전달됨.
 					console.log("있음(1)없음(0) 여부 : "+result);
 					
+						<!--document.querySelector("#signName").style.setProperty('padding','5px');-->
+						document.querySelector("#signName").style.setProperty('margin','5px');
+						
 					if(result == "1"){ //중복된 아이디가 존재함
-						alert("이미 존재하는 닉네임이 있습니다.");
+						$("#checkNickName").html("이미 존재하는 닉네임이 있습니다.");
+					    $("#checkNickName").attr('color','red')
+					    
 					}else{
 						console.log(result);
-						alert("사용가능한 닉네임 입니다.");
+						$("#checkNickName").html("사용가능한 닉네임 입니다.");
+						$("#checkNickName").attr('color','black')
 						$("#duplicateCheck").val("idCheck");
 						//attr(속성, 변경할 값)함수는 태그의 내부속성을 변경하는 함수
 					}
 				}
 			});
 		}//else가 끝나는 부분
-		console.log(checkName);
-	}
+	});
 	
 	// 이메일 중복 검사
-	function emailCheck() {
+	$("#signEmail").focusout(function emailCheck() {
 		var email = $("#signEmail").val(); //id태그 값에 접근
 		var checkEmail= {"checkEmail":email};  //전송할 데이터의 key:value설정
 		var exptext = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
@@ -159,11 +171,16 @@
 					//result매개변수로 전달됨.
 					console.log("있음(1)없음(0) 여부 : "+result);
 					
+					<!--document.querySelector("#signEmail").style.setProperty('padding','5px');-->
+					document.querySelector("#signEmail").style.setProperty('margin','5px');
 					if(result == "1"){ //중복된 이메일이 존재함
-						alert("이미 존재하는 이메일이 있습니다.");
+						$("#checkEmail2").html("이미 존재하는 이메일이 있습니다.");
+						$("#checkEmail2").attr('color','red')
+					
 					}else{
 						console.log(result);
-						alert("사용가능한 이메일 입니다.");
+						$("#checkEmail2").html("사용가능한 이메일 입니다.");
+						$("#checkEmail2").attr('color','black')
 						$("#duplicateCheck").val("idCheck");
 						//attr(속성, 변경할 값)함수는 태그의 내부속성을 변경하는 함수
 					}
@@ -172,7 +189,7 @@
 		}//else가 끝나는 부분
 		console.log(checkEmail);
 		
-	}
+	});
 	
 </script>
       

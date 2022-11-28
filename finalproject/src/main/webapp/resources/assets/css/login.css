@@ -1,5 +1,5 @@
 @charset "UTF-8";
-@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,300italic,400italic");
+@import url("https://fonts.googleapis.com/css?family=Hi+Melody:400"); 
 @import url("fontawesome-all.min.css");
 
 *{
@@ -8,7 +8,7 @@
 }
 
 body{
-  font-family: roboto;
+  font-family: 'Hi Melody';
   user-select: none;
   /* main에서 가져온 코드 */
   background-image: url("images/overlay.png"), url("images/bg.jpg");
@@ -52,17 +52,18 @@ body{
   clear: both;
   width: 100%;
   box-sizing: border-box;
-  height: 600px;
+  height: 500px;
 }
 
-.input{
+input{
   width: 100%;
   padding: 20px;
   box-sizing: border-box;
   margin-bottom: 25px;
   border: 2px solid #e9eaea;
   color: #3e3e40;
-  font-size: 14px;
+  font-size: 22px;
+  font-family: 'Hi Melody';
   outline: none;
   transform: all 0.5s ease;
 }
@@ -74,7 +75,6 @@ body{
 .btn{
   width: 100%;
   background: #e4e4e4;
-  height: 50px;
   text-align: center;
   line-height: 60px;
   text-transform: uppercase;
@@ -97,17 +97,17 @@ span a{
 
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
   color: #3e3e40;
-  font-family: roboto;
+  font-family: 'Hi Melody';
 }
 ::-moz-placeholder { /* Firefox 19+ */
   color: #3e3e40;
-  font-family: roboto;
+  font-family: 'Hi Melody';
 }
 :-ms-input-placeholder { /* IE 10+ */
   color: #3e3e40;
-  font-family: roboto;
+  font-family: 'Hi Melody';
 }
 :-moz-placeholder { /* Firefox 18- */
   color: #3e3e40;
-  font-family: roboto;
+  font-family: 'Hi Melody';
 }

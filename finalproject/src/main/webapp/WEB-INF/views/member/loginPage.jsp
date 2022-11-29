@@ -35,6 +35,7 @@
        
       <form class="signup-form" action="signUp" method="post" id="signup-form">
           <input type="email" placeholder="이메일" class="input" name="email" id="signEmail"><br />
+          <input type="hidden" id="email_duplicateCheck" value="emailUncheck">
            <font id = "checkEmail2" size = "3"></font>
           
           <!--<input type="button" class="btn" value="이메일 중복 체크" onclick="emailCheck()"> -->
@@ -42,7 +43,7 @@
           <input type="text" placeholder="닉네임" class="input" name="name" id="signName"><br />
           <font id = "checkNickName" size = "3"></font>
           <!-- <input type="button" class="btn loginBtn" value="닉네임 중복 체크" onclick="nameCheck()"> -->
-          <input type="hidden" id="duplicateCheck" value="idUncheck">								
+          <input type="hidden" id="name_duplicateCheck" value="idUncheck">								
           
           <input type="password" placeholder="패스워드" class="input" name="pw" id="signPw"><br />
           <input type="password" placeholder="패스워드 확인" class="input" name="pw2" id="signPw2"><br />
@@ -76,6 +77,12 @@
 	    }else if($("#signPw").val()==""){
 	        alert("비밀번호를 입력하세요");
 	        return;
+	    }else if($("#email_duplicateCheck").val()!="emailCheck"){
+	    	alert("이메일이 중복됩니다.");
+	    	return; 
+	    }else if($("#name_duplicateCheck").val()!="nameCheck"){
+	    	alert("닉네임이 중복됩니다.");
+	    	return;	
 	    }else if(pw.length < 8 ){
 			alert("비밀번호 8글자 이상 입력하세요");	    
 			return;
@@ -139,7 +146,7 @@
 						console.log(result);
 						$("#checkNickName").html("사용가능한 닉네임 입니다.");
 						$("#checkNickName").attr('color','black')
-						$("#duplicateCheck").val("idCheck");
+						$("#name_duplicateCheck").val("nameCheck");
 						//attr(속성, 변경할 값)함수는 태그의 내부속성을 변경하는 함수
 					}
 				}
@@ -182,7 +189,7 @@
 						console.log(result);
 						$("#checkEmail2").html("사용가능한 이메일 입니다.");
 						$("#checkEmail2").attr('color','black')
-						$("#duplicateCheck").val("idCheck");
+						$("#email_duplicateCheck").val("emailCheck");
 						//attr(속성, 변경할 값)함수는 태그의 내부속성을 변경하는 함수
 					}
 				}

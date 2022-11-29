@@ -55,7 +55,7 @@ body{
   clear: both;
   width: 100%;
   box-sizing: border-box;
-  height: 500px;
+  height: 100%;
 }
 
 input{

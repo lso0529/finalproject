@@ -157,16 +157,22 @@ public class BoardController {
 		ArrayList<BoardVO> mylist = service.mylist(name);
 		int count = service.mycount(name);
 		
-		//받은 좋아요 수 가져오기
-		Integer mylike = service.mylike(name);
-		
-		if (mylike==null) {
-			mylike = 0;
+		for (int i=0;i<mylist.size();i++) {
+			BoardVO vo = mylist.get(i);
+			
+			Integer likes = service.liketotal(vo.getBno());
+			
+			if (likes == null) {
+				likes=0;
+			}
+			
+			vo.setLikes(likes);
+			mylist.set(i, vo);
 		}
+
 		
 		session.setAttribute("mycount", count);
 		session.setAttribute("mylist", mylist);
-		session.setAttribute("mylike", mylike);
 		
 //		System.out.println("여기"+count+mylist.toString());
 		

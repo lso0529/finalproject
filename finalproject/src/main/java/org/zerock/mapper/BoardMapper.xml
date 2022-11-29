@@ -68,7 +68,7 @@
 	
 	<!-- 내 좋아요 수 총계 출력 -->
 	<select id="mylike" resultType="Integer">
-		select sum(likes) from board where name=#{name}
+		select sum(LIKECOUNT) from likes where name=#{name}
 	</select>
 	
 	<!-- 좋아요 여부 -->

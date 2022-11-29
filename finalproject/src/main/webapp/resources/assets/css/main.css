@@ -1602,6 +1602,7 @@ input, select, textarea {
 		cursor: pointer;
 		outline: 0;
 		padding: 0.7em 1.5em 0.7em 1.5em;
+		font-family:'Hi Melody';
 	}
 
 		input[type="button"]:hover,

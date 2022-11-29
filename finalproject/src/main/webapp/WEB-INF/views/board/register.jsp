@@ -20,7 +20,7 @@
 					</div>
 					<div class="col-12">
 						<!-- <input type="submit" value="저장" /> -->
-						<button type="button" onclick=register()>저장</button>
+						<button type="button" style = "font-size: 20px; height: 50px; width: 130px; line-height: 25px" onclick=register()>저장</button>
 					</div>
 				</div>
 			</div>

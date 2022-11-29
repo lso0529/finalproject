@@ -8,13 +8,12 @@
   			integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
   			crossorigin="anonymous"></script>
   	<style>
-  	button.loginBtn{
+  	/*button.loginBtn{
   		vertical-align:middle;
   	}
   	html{
-  		font-family: 'Hi Melody';,
   		font-size: 22px;
-  	}
+  	}*/
   	</style>
 </head>
 <body>
@@ -29,7 +28,7 @@
       <form class="login-form" action="login" method="post" id="login-form">
           <input type="email" placeholder="이메일" class="input" name="email" id="loginEmail"><br />
           <input type="password" placeholder="패스워드" class="input" name="pw" id="loginPw"><br />
-          <input type="button" class="btn loginBtn" value="로그인" onclick="loginCheck()" style="padding: 0px"> 
+          <input type="button" style="width: 100%"  value="로그인" onclick="loginCheck()" style="padding: 0px"> 
            <font  style = "font-family: Hi Melody"> </font>
           <span><a style="font-size: 8;" href="findPw">비밀번호 찾기</a></span>
        </form>
@@ -48,7 +47,9 @@
           <input type="password" placeholder="패스워드" class="input" name="pw" id="signPw"><br />
           <input type="password" placeholder="패스워드 확인" class="input" name="pw2" id="signPw2"><br />
           
-          <input type="button" class="btn signupBtn" value="회원가입" onclick="signupCheck()" id="sign_btn" style="padding: 0px"> 
+          <input type="button" value="회원가입" style="width: 100%;" onclick="signupCheck()" id="sign_btn" style="padding: 0px">
+          <!-- <button type="button" value="회원가입" style="width: 100%;" onclick="signupCheck()" id="sign_btn" style="padding: 0px">회원가입</button> -->
+          <!-- <button type="button" style = "font-size: 20px; height: 50px; width: 130px; line-height: 25px" onclick="location.href='list?topic=${vo.topic}'">목록으로</button> -->
       	  <font  id="sign_btn" style = "font-family: Hi Melody"> </font>
        </form>
     </div>

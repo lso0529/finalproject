@@ -12,6 +12,7 @@
 		</header>
 		<p style="font-size: 25px">
 			"${topic }"에 대한 다른 사람들의 이야기를 들어보세요.<br>
+			글을 누르면 상세 페이지로 이동합니다.<br><br>
 			<button
 				style="font-size: 20px; height: 50px; width: 130px; line-height: 25px"
 				onclick="location.href='register?topic=${topic}'">글쓰기</button>
@@ -29,8 +30,7 @@
 					</div>
 					<div align="center" style="padding: 0; line-height: 400px">
 						<button type="button"
-							style="color: black; background-color: white"
-							onclick="like(${boardlist.bno})">
+							style="color: black; background-color: white">
 							♡<br>${boardlist.likes }</button>
 					</div>
 				</c:forEach>

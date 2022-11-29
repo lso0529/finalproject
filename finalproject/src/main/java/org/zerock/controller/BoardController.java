@@ -55,7 +55,18 @@ public class BoardController {
 		
 		ArrayList<BoardVO> boardlist = service.boardAll(topic);
 		
-//		System.out.println(boardlist);
+		for (int i=0;i<boardlist.size();i++) {
+			BoardVO vo = boardlist.get(i);
+			
+			Integer likes = service.liketotal(vo.getBno());
+			
+			if (likes == null) {
+				likes=0;
+			}
+			
+			vo.setLikes(likes);
+			boardlist.set(i, vo);
+		}
 		
 		model.addAttribute("boardlist", boardlist);
 		model.addAttribute("topic", topic);
@@ -119,6 +130,11 @@ public class BoardController {
 		String total2 = Integer.toString(total);
 		
 		System.out.println(total2);
+		
+//		if (total2.equals(null)) {
+//			total2 = "0";
+//		}
+		
 		return total2;
 	}
 	

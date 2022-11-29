@@ -14,7 +14,7 @@
 				<div class="row">
 					<div class="col-12">
 						<input type="hidden" name="topic" value="${vo.topic }">
-						<input type="hidden" name="name" value="name">
+						<input type="hidden" name="name" value="${vo.name }">
 						<input type="hidden" name="bno" value="${vo.bno }">
 						<%
 						// secret이 0이면 공개글, 1이면 비밀글
@@ -51,10 +51,15 @@ var likeval = ${like};
 
 let bno = ${vo.bno};
 let name = '${user_name}';
+
 if(likeval > 0){
 	console.log(likeval + "좋아요 누름");
 	$('.LikeBtn').html("♥");
 	$('.LikeBtn').click(function() {
+		if (name==''){
+			alert("로그인해주세요!");
+			window.location.replace("/member/loginPage");
+		}
 		$.ajax({
 			type :'post',
 			url : '/board/likedown',
@@ -67,6 +72,10 @@ if(likeval > 0){
 				),
 			success : function(data) {
 				alert('취소 성공');
+				window.location.replace("/board/listcontent?bno="+bno);
+				//$('.LikeBtn').html("♡");
+				//$(".liketotal").text(total-1);
+				//likeval = 0;
 			}
 		})// 아작스 끝
 	})
@@ -75,6 +84,10 @@ if(likeval > 0){
 	console.log(likeval + "좋아요 안누름")
 	console.log(bno);
 	$('.LikeBtn').click(function() {
+		if (name==''){
+			alert("로그인해주세요!");
+			window.location.replace("/member/loginPage");
+		}
 		$.ajax({
 			type :'post',
 			url : '/board/likeup',
@@ -87,27 +100,15 @@ if(likeval > 0){
 				),
 			success : function(data) {
 				alert('좋아요 성공');
+				window.location.replace("/board/listcontent?bno="+bno);
+				//$('.LikeBtn').html("♥");
+				//$(".liketotal").text(total+1);
+				//likeval = 1;
 			}
 		})// 아작스 끝
 	})
 }
 
-var likeService= (function getList(param, callback, error){
-	var bno = param.bno;
-	
-	$.getJSON("/board/"+bno+".json",
-		function(data){
-			if(callback){
-				callback(data);		//댓글 목록만 가져오는 경우
-				//callback(data.replyCnt, data.list);		//댓글 총 갯수와 목록 가져오는 경우
-			}
-		}).fail(function(xhr, status, err){
-			if(error){
-				error();
-			}
-		});
-})
-	
 	$(document).ready(function () {
 		var bno = ${vo.bno};
 		var checkbno = {"bno":bno};
@@ -124,10 +125,11 @@ var likeService= (function getList(param, callback, error){
 				//ajax통신에 성공했을 때에 호출될 자바스크립트 함수, 결과 여부가
 				//result매개변수로 전달됨.
 				console.log(total2);
+				
 				$(".liketotal").text(total2);
 				}
 	        })
 		});
-
+var total = $(".liketotal").text();
 </script>
 <%@include file="../include/footer.jsp"%>

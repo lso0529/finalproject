@@ -16,8 +16,9 @@
 			<form class="findPw-form" action="emailCheckAndfindPwPage" method="POST" id="email_check_form">
 			
 				<input type="email" placeholder="이메일을 입력하세요" class="input"name="email" id="email">
-				<input type="button" value="확인" onclick="checkEmail()"> 
-				<input type="button" value="취소" onclick="location.href='loginPage'">
+				<button type="button" style = "font-size: 20px; height: 50px; width: 180px; line-height: 25px" onclick="checkEmail()()">확인</button>
+                <button type="button" style = "font-size: 20px; height: 50px; width: 180px; line-height: 25px" onclick="location.href='loginPage'">취소</button>
+				
 				
 
 			</form>

@@ -58,6 +58,38 @@ body{
   height: 100%;
 }
 
+.pwUpdate-form{
+	font-family: 'Hi Melody';
+  background: #fff;
+  padding: 40px;
+  clear: both;
+  width: 100%;
+  box-sizing: border-box;
+  height: 300px;
+}
+
+.findPw-form{
+	font-family: 'Hi Melody';
+  background: #fff;
+  padding: 40px;
+  clear: both;
+  width: 100%;
+  box-sizing: border-box;
+  height: 230px;
+}
+
+
+.delete-form{
+	font-family: 'Hi Melody';
+  background: #fff;
+  padding: 40px;
+  clear: both;
+  width: 100%;
+  box-sizing: border-box;
+  height: 250px;
+}
+
+
 input{
 	font-family: 'Hi Melody';
   width: 100%;

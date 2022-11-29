@@ -157,5 +157,11 @@ public class MemberController {
 		}
 		return "redirect:/member/loginPage";
 	}
+	
+	//프로필 사진 수정 페이지 연결
+	@RequestMapping(value = "/profileEdit")
+	public String profileEditPage() {
+		return "member/profileEdit";
+	}
     
 }

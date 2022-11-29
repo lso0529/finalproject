@@ -27,6 +27,16 @@
 	height: 100%;
 	object-fit: cover;
 }
+.item-wrapper {
+    position: relative;
+    /* 생략 */
+}
+.item-over-image {
+    position: absolute;
+    left: 0;
+    bottom: 0.1em;
+    /* 이하 생략 */
+}
 </style> 
 
 <% 
@@ -50,26 +60,31 @@ session.setAttribute("user_email", user_email);
 					<div class="media align-items-end profile-header">
 						<div class="profile mr-3"></div>
 						<div class="media-body mb-5 text-white">
-							<div class="profil-div">
+						
+						<div class="wrapper">
+							<div class="profil-div item-wrapper">
 								<img class="profil-image" src="${pageContext.request.contextPath}/resources/images/test profil.jpg" alt="프로필">
 							</div>
+							<div class="item-over-image">
+								<i class="fa fa-camera-retro" id=target-icon></i>
+								<input class="#" type="file" name="uploadfile" accept="image/*">
+							</div>
+						</div>
 							<div class="uploadResult">
-								<ul>
-									
-								</ul>
+								
 							</div>
 							<h4 class="mt-0 mb-0"><%=user_name%></h4>
 							<div class="small mb-4">
 								<i class="fa mr-2"></i><%=user_email%>
+								<i class="fa fa-camera"></i>
 							</div>
 						</div>
 					</div>
 				</div>
 				<br> <br>
 				<div class="py-4 px-4">
-					<div
-						class="d-flex align-items-center justify-content-between mb-3">
-
+					<div class="d-flex align-items-center justify-content-between mb-3">
+						
 						<a href="deleteCheck" >회원탈퇴</a>
 						<a href="pwUpdatePage">비밀번호 변경 </a>
 					</div>
@@ -78,7 +93,7 @@ session.setAttribute("user_email", user_email);
 		</div>
 	</article>
 			<!-- End profile widget -->
-			<!-- modal -->
+			<!-- modal 
 	<div class="profil-modal">
 		<div class="profil-modal-content" style="padding: 0px;">
 			<h4 style="padding-bottom: 10px;">프로필 사진 수정</h4>
@@ -88,7 +103,7 @@ session.setAttribute("user_email", user_email);
 				<button id="uploadBtn">업로드</button>
 				<button id="send">완료</button>
 		</div>	
-	</div>
+	</div>-->
 </div>
 <!-- include jQuery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
@@ -112,7 +127,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 		});
 		
 	});
-	
+
 	var regex = new RegExp("(.*?)\.(exe|sh|zip|alz)$"); // 파일 확장자 제한 
 	var maxSize = 5242880; // 5MB 제한
 	
@@ -168,7 +183,8 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 			}); // $.ajax
 		});
 	});
-
+	
+	// 업로드된 파일 섬네일로 출력
 	var uploadResult = $(".uploadResult ul");
 	
 	function showUploadedFile(uploadResultArr){
@@ -187,6 +203,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 		});
 		uploadResult.append(str);
 	}
+	
 </script>
 
 

@@ -8,14 +8,16 @@
 .profile-header {
 	transform: translateY(5rem);
 }
-
-/*
-	*
-	* ==========================================
-	* FOR DEMO PURPOSE
-	* ==========================================
-	*
-	*/
+.item-wrapper {
+    position: relative;
+    /* 생략 */
+}
+.item-over-image {
+    position: absolute;
+    left: 0;
+    bottom: 0.75em;
+    /* 이하 생략 */
+}
 </style>
 
 <div id="main" style="width:100%; margin:auto;">
@@ -33,35 +35,28 @@
 							<div class="small mb-4" style="font-size: 25px">
 								<i style="font-size: 25px" class="fa fa-map-marker mr-2"></i> ${sessionScope.mycount } 편<br>
 								<i style="font-size: 25px" class="fa fa-map-marker mr-2"></i> 좋아요 ${sessionScope.mylike } 개
-
-								<ul>
-
-								</ul>
 							</div>
 						</div>
 					</div>
 				</div>
-				<br>
-				<div class="py-4 px-4">
-					<div class="d-flex align-items-center justify-content-between mb-3">
-						<!--<h5 class="mb-0">내가 쓴 글</h5>-->
-						<p style="font-size: 25px">글을 선택하면 상세보기 페이지로 넘어갑니다</p>
+				<div class="#">
+					<div class="#">
+						
 					</div>
 					<br>
-					<div class="row" align="center"
-						style="width: 100%; height: 100%; margin: 0">
+					<div class="#">
 						
 
 					
 					</div>
 				</div>
-
 			</div>
 		</div>
 	</article>
 </div>
 <script>
-var regex = new RegExp("(.*?)\.(exe|sh|zip|alz)$"); // 파일 확장자 제한 
+
+	var regex = new RegExp("(.*?)\.(exe|sh|zip|alz)$"); // 파일 확장자 제한 
 	var maxSize = 5242880; // 5MB 제한
 	
 	// 업로드전 파일 체크 
@@ -116,7 +111,8 @@ var regex = new RegExp("(.*?)\.(exe|sh|zip|alz)$"); // 파일 확장자 제한
 			}); // $.ajax
 		});
 	});
-
+	
+	// 업로드된 파일 섬네일로 출력
 	var uploadResult = $(".uploadResult ul");
 	
 	function showUploadedFile(uploadResultArr){

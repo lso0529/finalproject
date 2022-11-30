@@ -9,6 +9,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -16,10 +20,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.zerock.command.AttachFileDTO;
+import org.zerock.service.AttachFileService;
 
 import lombok.extern.log4j.Log4j;
 import net.coobird.thumbnailator.Thumbnailator;
@@ -28,13 +36,41 @@ import net.coobird.thumbnailator.Thumbnailator;
 @Log4j
 public class FileUploadController {
 	
-	// 파일 업로드 get
+	@Autowired
+	AttachFileService service;
+	
+	@RequestMapping(value = "/loadProfile")
+	@ResponseBody
+	public ResponseEntity<List<AttachFileDTO>> loadProfile(String email){
+		AttachFileDTO service_DTO = new AttachFileDTO();
+		service_DTO.setEmail(email);
+		
+		AttachFileDTO result_DTO = new AttachFileDTO();
+		result_DTO = service.findByEmail(service_DTO);
+		
+		List<AttachFileDTO> list = new ArrayList<>();
+		list.add(result_DTO);
+		
+		return new ResponseEntity<>(list, HttpStatus.OK);
+	}
+	
+	
+	// 업로드된 파일 받아오기 
 	@GetMapping("/display")
 	@ResponseBody
-	public ResponseEntity<byte[]> getFile(String fileName) {
+	public ResponseEntity<byte[]> getFile(String fileName, HttpServletRequest request) {
+		
+		// 프로젝트 파일에 저장소
+		ServletContext servletContext = request.getSession().getServletContext();
+		
+		String webappRoot = servletContext.getRealPath("/");
+		
+		String uploadFolder = webappRoot + "resources\\profileImage\\";
+		
 		log.info("fileName: " + fileName);
 		
-		File file = new File("C:\\Users\\JGD\\uploadTest\\" + fileName);
+		// 로컬에 저장된 위치를 설정
+		File file = new File(uploadFolder + fileName);
 		
 		log.info("file: " + file);
 		
@@ -54,12 +90,22 @@ public class FileUploadController {
 	}
 	
 	// 파일 업로드 post
-	@PostMapping(value = "/uploadAjaxAction", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@RequestMapping(value = "/uploadAjaxAction", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	@ResponseBody
-	public ResponseEntity<List<AttachFileDTO>> uploadAjasPost(MultipartFile[] uploadFile) {
+	public ResponseEntity<List<AttachFileDTO>> uploadAjaxPost(MultipartFile[] uploadFile, String email, HttpServletRequest request) {
 		
+		ServletContext servletContext = request.getSession().getServletContext();
+		
+		System.out.println("user_email:"+email);
+		
+		String webappRoot = servletContext.getRealPath("/");
+				
 		List<AttachFileDTO> list = new ArrayList<>();
-		String uploadFolder = "C:\\Users\\JGD\\uploadTest\\";
+		
+		// 프로젝트 파일 저장 위치
+		String uploadFolder = webappRoot + "resources\\profileImage\\";
+		// 로컬에 저장할 위치를 설정
+//		String uploadFolder = "C:\\Users\\JGD\\uploadTest\\";
 		String uploadFolderPath = getFolder();
 		
 		// make folder ======
@@ -99,11 +145,12 @@ public class FileUploadController {
 				
 				attachDTO.setUuid(uuid.toString());
 				attachDTO.setUploadPath(uploadFolderPath);
+				attachDTO.setEmail(email);
 				
 				// check image type file
 				if(checkImageType(saveFile)) {
 					
-					attachDTO.setImage(true);
+					//attachDTO.setFileType(false);
 					
 					FileOutputStream thumbnail = new FileOutputStream(new File(uploadPath, "s_" + uploadFileName));
 					
@@ -114,6 +161,10 @@ public class FileUploadController {
 				
 				// add to List
 				list.add(attachDTO);
+				System.out.println(attachDTO.toString());
+				
+				// Service 구간
+				service.insert(attachDTO);
 				
 			} catch (Exception e) {
 				log.error(e.getMessage());
@@ -129,6 +180,7 @@ public class FileUploadController {
 		
 		try {
 			String contentType = Files.probeContentType(file.toPath());
+			log.info("contentType"+contentType);
 			
 			return contentType.startsWith("image");
 			
@@ -148,6 +200,5 @@ public class FileUploadController {
 		String str = sdf.format(date);
 		
 		return str.replace("-", File.separator);
-	}
-		
+	}	
 }

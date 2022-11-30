@@ -62,7 +62,7 @@ session.setAttribute("user_email", user_email);
 						
 						<div class="wrapper">
 							<div class="profil-div item-wrapper">
-								<div>
+								<div class="uploadResult">
 									<img class="profil-image item-over-image" src="${pageContext.request.contextPath}/resources/images/test profil.jpg" alt="프로필">
 								</div>
 								<div class="uploadDiv">
@@ -71,9 +71,6 @@ session.setAttribute("user_email", user_email);
 								</div>
 							</div>
 						</div>
-							<div class="uploadResult">
-								
-							</div>
 							<h4 class="mt-0 mb-0"><%=user_name%></h4>
 							<div class="small mb-4">
 								<i class="fa mr-2"></i><%=user_email%>
@@ -93,17 +90,6 @@ session.setAttribute("user_email", user_email);
 		</div>
 	</article>
 			<!-- End profile widget -->
-			<!-- modal 
-	<div class="profil-modal">
-		<div class="profil-modal-content" style="padding: 0px;">
-			<h4 style="padding-bottom: 10px;">프로필 사진 수정</h4>
-				<div>
-					<input type="file" name="uploadFile">
-				</div>
-				<button id="uploadBtn">업로드</button>
-				<button id="send">완료</button>
-		</div>	
-	</div>-->
 </div>
 <!-- include jQuery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
@@ -142,14 +128,16 @@ session.setAttribute("user_email", user_email);
 			var formData = new FormData();
 			var inputFile = $("input[name='uploadFile']");
 			var fileInput = e.target;
-			console.log(fileInput);
-			console.log(fileInput.files[0])
 			var files = fileInput.files[0];
 			
+			console.log(fileInput);
+			console.log(fileInput.files[0]);
 			console.log(inputFile);
 			console.log(inputFile[0]);
 			
 			console.log(files);
+			
+			var email = "<%=user_email%>";
 			
 			// 업로드전 파일 체크 함수 실행
 			if(files != null){
@@ -157,6 +145,7 @@ session.setAttribute("user_email", user_email);
 					return false;
 				}
 					formData.append("uploadFile", files);
+					formData.append("email", email);
 			}
 			
 			$.ajax({
@@ -170,7 +159,7 @@ session.setAttribute("user_email", user_email);
 					alert("업로드 완료!");
 					console.log(result);
 					
-					showUploadedFile(result);
+					showUploadedFile(result);// 업로드 결과 처리 함수
 					
 					<!--$(".uploadDiv").html(cloneObj.html());-->
 				}
@@ -183,21 +172,52 @@ session.setAttribute("user_email", user_email);
 	
 	function showUploadedFile(uploadResultArr){
 		
+		if(!uploadResultArr || uploadResultArr.length == 0){}
+		
+		var uploadResult = $(".uploadResult");
+		
 		var str = "";
 		
 		$(uploadResultArr).each(function(i, obj){
 			
-			if(!obj.image){
+			/*if(!obj.image){
 				str += "<img class='profil-image' src='${pageContext.request.contextPath}/resources/images/test profil.jpg alt='프로필'>"+obj.fileName;
-			}else{
+			}else{*/
 				var fileCallPath = encodeURIComponent(obj.uploadPath + "/s_" + obj.uuid + "-" + obj.fileName);
 				console.log(fileCallPath);
 				
-				str += "<img src='/display?fileName="+fileCallPath+"'>";
-			}
+				str += "<img class='profil-image item-over-image' src='/display?fileName="+fileCallPath+"'>";
+			//}
 		});
 		uploadResult.append(str);
 	}
+	
+	// 페이지내의 세션중에 user_email 정보를 받아서 
+	// ajax로 통신하여 email을 매개로 DB에 
+	// 저장된 uuid,filePath,fileName을 가져와 서버내에 
+	// 저장되어 있는 이미지파일을 불러와야 한다.
+	$(function(){
+		
+		var formData = new FormData();
+		var email = "<%=user_email%>";
+		
+		formData.append("email", email);
+		
+		$.ajax({
+			url: '/loadProfile',
+			processData: false,
+			contentType: false,
+			data: formData,
+			type: 'POST',
+			dataType: 'json',
+			success: function(result){
+				console.log("다녀왔어: "+result);
+				
+				showUploadedFile(result);// 업로드 결과 처리 함수
+				
+			}
+		}); // $.ajax
+	});
 	
 </script>
 

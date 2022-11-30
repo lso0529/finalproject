@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="org.zerock.mapper.AttachFileMapper">
+  
+  	<insert id="insert" parameterType="org.zerock.command.AttachFileDTO">
+  		insert into attach (uuid, uploadpath, filename, email)
+  		values (#{uuid}, #{uploadPath}, #{fileName}, #{email})
+  	</insert>
+  	
+  	<delete id="delete" parameterType="String">
+  		delete from attach where email = #{email}
+  	</delete>
+  	
+  	<select id="findByEmail" resultType="org.zerock.command.AttachFileDTO">
+  		select * from attach where email = #{email}
+  	</select>
+  	
+  	<select id="profileCheck" resultType="int">
+  		select count(*) from attach where email = #{email}
+  	</select>
+  
+  </mapper>

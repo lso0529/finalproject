@@ -99,6 +99,9 @@ public class FileUploadController {
 		System.out.println("user_email:"+email);
 		
 		String webappRoot = servletContext.getRealPath("/");
+		
+		// 확인해볼것
+		System.out.println("servletContext.getContexPath"+servletContext.getContextPath());
 				
 		List<AttachFileDTO> list = new ArrayList<>();
 		

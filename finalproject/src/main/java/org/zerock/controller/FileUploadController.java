@@ -34,7 +34,7 @@ public class FileUploadController {
 	public ResponseEntity<byte[]> getFile(String fileName) {
 		log.info("fileName: " + fileName);
 		
-		File file = new File("C:\\\\Users\\\\JGD\\\\uploadTest" + fileName);
+		File file = new File("C:\\Users\\JGD\\uploadTest\\" + fileName);
 		
 		log.info("file: " + file);
 		
@@ -48,6 +48,7 @@ public class FileUploadController {
 			
 		} catch (Exception e) {
 			log.info(e.getMessage());
+			e.printStackTrace();
 		}
 		return result;
 	}
@@ -58,7 +59,8 @@ public class FileUploadController {
 	public ResponseEntity<List<AttachFileDTO>> uploadAjasPost(MultipartFile[] uploadFile) {
 		
 		List<AttachFileDTO> list = new ArrayList<>();
-		String uploadFolder = "C:\\Users\\JGD\\uploadTest";
+		String uploadFolder = "C:\\Users\\JGD\\uploadTest\\";
+		String uploadFolderPath = getFolder();
 		
 		// make folder ======
 		File uploadPath = new File(uploadFolder, getFolder());
@@ -82,6 +84,7 @@ public class FileUploadController {
 			// file path
 			uploadFileName = uploadFileName.substring(uploadFileName.lastIndexOf("\\")+1);
 			log.info("only file Name:" + uploadFileName);
+			attachDTO.setFileName(uploadFileName);
 			
 			UUID uuid = UUID.randomUUID();
 			
@@ -90,11 +93,12 @@ public class FileUploadController {
 			
 		
 			try {
+				
 				File saveFile = new File(uploadPath, uploadFileName);
 				multipartFile.transferTo(saveFile);
 				
 				attachDTO.setUuid(uuid.toString());
-				attachDTO.setUploadPath(uploadFolder);
+				attachDTO.setUploadPath(uploadFolderPath);
 				
 				// check image type file
 				if(checkImageType(saveFile)) {
@@ -113,6 +117,7 @@ public class FileUploadController {
 				
 			} catch (Exception e) {
 				log.error(e.getMessage());
+				e.printStackTrace();
 			}
 			
 		}

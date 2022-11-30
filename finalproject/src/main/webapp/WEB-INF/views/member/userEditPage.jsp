@@ -29,13 +29,12 @@
 }
 .item-wrapper {
     position: relative;
-    /* 생략 */
 }
 .item-over-image {
     position: absolute;
-    left: 0;
-    bottom: 0.1em;
-    /* 이하 생략 */
+    right: 0;
+    bottom: 1px;
+    background-color: white;
 }
 </style> 
 
@@ -58,16 +57,18 @@ session.setAttribute("user_email", user_email);
 			<div class="bg-white shadow rounded overflow-hidden">
 				<div class="px-4 pt-0 pb-4 bg-dark">
 					<div class="media align-items-end profile-header">
-						<div class="profile mr-3"></div>
+						<div class="profile"></div>
 						<div class="media-body mb-5 text-white">
 						
 						<div class="wrapper">
 							<div class="profil-div item-wrapper">
-								<img class="profil-image" src="${pageContext.request.contextPath}/resources/images/test profil.jpg" alt="프로필">
-							</div>
-							<div class="item-over-image">
-								<i class="fa fa-camera-retro" id=target-icon></i>
-								<input class="#" type="file" name="uploadfile" accept="image/*">
+								<div>
+									<img class="profil-image item-over-image" src="${pageContext.request.contextPath}/resources/images/test profil.jpg" alt="프로필">
+								</div>
+								<div class="uploadDiv">
+									<i class="fa fa-camera-retro item-over-image" id=target_icon ></i>
+									<input type="file" id="uploadfile" name="uploadfile" accept="image/*" style="display: none;" multiple>
+								</div>
 							</div>
 						</div>
 							<div class="uploadResult">
@@ -76,7 +77,6 @@ session.setAttribute("user_email", user_email);
 							<h4 class="mt-0 mb-0"><%=user_name%></h4>
 							<div class="small mb-4">
 								<i class="fa mr-2"></i><%=user_email%>
-								<i class="fa fa-camera"></i>
 							</div>
 						</div>
 					</div>
@@ -109,24 +109,13 @@ session.setAttribute("user_email", user_email);
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" intergrity="sha256-FgqCb/KJQILNfOu91ta32o/NMZxItwRo8qtmkMRdAu8="
 		crossorigin="anonymous"></script>
-<!--  jQuery Modal -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.2/jquery.modal.min.js" 
-integrity="sha512-ztxZscxb55lKL+xmWGZEbBHekIzy+1qYKHGZTWZYH1GUwxy0hiA18lW6ORIMj4DHRgvmP/qGcvqwEyFFV7OYVQ==" 
-crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <script>
-	// 모달 함수
-	$(function(){
-		
-		$(".profil-image").click(function(){
-			$(".profil-modal").fadeIn();
-		});
-		
-		$("#send").click(function(){
-			$(".profil-modal").fadeOut();
-		});
-		
-	});
+
+
+	$('#target_icon').click(function (e) {
+	    $('#uploadfile').click();
+	});  
 
 	var regex = new RegExp("(.*?)\.(exe|sh|zip|alz)$"); // 파일 확장자 제한 
 	var maxSize = 5242880; // 5MB 제한
@@ -148,21 +137,26 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	
 	// 파일 업로드 함수 
 	$(function(){
-		$("#uploadBtn").on("click", function(e){
+		$("#uploadfile").on("change", function(e){
 			
 			var formData = new FormData();
 			var inputFile = $("input[name='uploadFile']");
-			var files = inputFile[0].files;
+			var fileInput = e.target;
+			console.log(fileInput);
+			console.log(fileInput.files[0])
+			var files = fileInput.files[0];
 			
 			console.log(inputFile);
+			console.log(inputFile[0]);
+			
 			console.log(files);
 			
 			// 업로드전 파일 체크 함수 실행
-			for(var i = 0; i < files.length; i++){
-				if(!checkExtension(files[i].name, files[i].size)){
+			if(files != null){
+				if(!checkExtension(files.name, files.size)){
 					return false;
 				}
-					formData.append("uploadFile", files[i]);
+					formData.append("uploadFile", files);
 			}
 			
 			$.ajax({
@@ -178,14 +172,14 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 					
 					showUploadedFile(result);
 					
-					$(".uploadDiv").html(cloneObj.html());
+					<!--$(".uploadDiv").html(cloneObj.html());-->
 				}
 			}); // $.ajax
 		});
 	});
 	
 	// 업로드된 파일 섬네일로 출력
-	var uploadResult = $(".uploadResult ul");
+	var uploadResult = $(".uploadResult");
 	
 	function showUploadedFile(uploadResultArr){
 		
@@ -194,11 +188,12 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 		$(uploadResultArr).each(function(i, obj){
 			
 			if(!obj.image){
-				str += "<li><img class='profil-image' src='${pageContext.request.contextPath}/resources/images/test profil.jpg alt='프로필'></li>"+obj.fileName+"</li>";
+				str += "<img class='profil-image' src='${pageContext.request.contextPath}/resources/images/test profil.jpg alt='프로필'>"+obj.fileName;
 			}else{
-				var fileCallPath = encodeURIComponent(obj.uploadPath + "/s_" + obj.fileName);
+				var fileCallPath = encodeURIComponent(obj.uploadPath + "/s_" + obj.uuid + "-" + obj.fileName);
+				console.log(fileCallPath);
 				
-				str += "<li><img src='/display?fileName="+fileCallPath+"'><li>";
+				str += "<img src='/display?fileName="+fileCallPath+"'>";
 			}
 		});
 		uploadResult.append(str);

@@ -149,10 +149,10 @@ session.setAttribute("user_email", user_email);
 				dataType: 'json',
 				success: function(result){
 					alert("업로드 완료!");
-					console.log(result);
+					console.log("result"+result);
 					
 					showUploadedFile(result);// 업로드 결과 처리 함수
-					
+					window.location.replace("/member/userEditPage");
 				}
 			}); // $.ajax
 		});
@@ -172,9 +172,10 @@ session.setAttribute("user_email", user_email);
 		$(uploadResultArr).each(function(i, obj){
 			
 				var fileCallPath = encodeURIComponent(obj.uploadPath + "/s_" + obj.uuid + "-" + obj.fileName);
-				console.log(fileCallPath);
+				console.log("fileCallPath:"+fileCallPath);
 				
 				str += "<img class='profil-image item-over-image1' src='/display?fileName="+fileCallPath+"'>";
+		
 		});
 		uploadResult.append(str);
 	}

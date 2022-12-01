@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.zerock.command.BoardVO;
 import org.zerock.command.MemberVO;
 import org.zerock.mapper.MemberMapper;
 
@@ -66,6 +65,11 @@ public class MemberServiceImpl implements MemberService {
 		int result = mapper.checkEmail(checkEmail);
 		return result;
 	}
-
+	
+	// 닉네임을 이용하여 계정정보 조회
+	@Override
+	public MemberVO lookUpMember(String name) {
+		return mapper.lookUpMember(name);
+	}
 
 }

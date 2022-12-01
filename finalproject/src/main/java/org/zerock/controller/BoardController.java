@@ -23,11 +23,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.zerock.command.AttachFileDTO;
 import org.zerock.command.BoardVO;
 import org.zerock.command.LikeVO;
+import org.zerock.command.MemberVO;
 import org.zerock.command.TopicVO;
+import org.zerock.service.AttachFileService;
 import org.zerock.service.BoardService;
+import org.zerock.service.MemberService;
 
 import lombok.extern.log4j.Log4j;
 
@@ -38,6 +43,9 @@ public class BoardController {
 	
 	@Autowired
 	BoardService service;
+	
+	@Autowired
+	MemberService memberservice;
 	
 	@RequestMapping("/topics")
 	public String topic(Model model) {
@@ -276,5 +284,37 @@ public class BoardController {
 	public void likedown(@RequestBody LikeVO vo) {
 		System.out.println("좋아요 싫어요!");
 		service.likedown(vo.getBno(), vo.getName());
+	}
+	
+	@RequestMapping("/otherUsersPage")
+	public String otherUsersPage(@RequestParam("name") String name, HttpSession session) {
+		
+		MemberVO member_vo = new MemberVO();
+		
+		member_vo = memberservice.lookUpMember(name);
+		
+		// 글 목록과 좋아요수 가져오기
+		session.setAttribute("otherUser_name", name);
+		ArrayList<BoardVO> mylist = service.mylist(name);
+		int count = service.mycount(name);
+		
+		for (int i=0;i<mylist.size();i++) {
+			BoardVO vo = mylist.get(i);
+			
+			Integer likes = service.liketotal(vo.getBno());
+			
+			if (likes == null) {
+				likes=0;
+			}
+			
+			vo.setLikes(likes);
+			mylist.set(i, vo);
+		}
+		// 글 목록과 좋아요수 세션에 담기
+		session.setAttribute("otherUser_count", count);
+		session.setAttribute("otherUser_list", mylist);
+		session.setAttribute("otherUser_VO", member_vo);
+		
+		return "board/other_userspage";
 	}
 }

@@ -70,5 +70,54 @@
 </article>
 </div>
 
+<script>
+//업로드된 파일 섬네일로 출력
+var uploadResult = $(".uploadResult");
+
+function showUploadedFile(uploadResultArr){
+	
+	if(!uploadResultArr || uploadResultArr.length == 0){}
+	
+	var uploadResult = $(".uploadResult");
+	
+	var str = "";
+	
+	$(uploadResultArr).each(function(i, obj){
+		
+			var fileCallPath = encodeURIComponent(obj.uploadPath + "/s_" + obj.uuid + "-" + obj.fileName);
+			console.log(fileCallPath);
+			
+			str += "<img class='profil-image item-over-image1' src='/display?fileName="+fileCallPath+"'>";
+	});
+	uploadResult.append(str);
+}
+
+// 페이지내의 세션중에 user_email 정보를 받아서 
+// ajax로 통신하여 email을 매개로 DB에 
+// 저장된 uuid,filePath,fileName을 가져와 서버내에 
+// 저장되어 있는 이미지파일을 불러와야 한다.
+$(function(){
+	
+	var formData = new FormData();
+	var email = "${sessionScope.user_name }";
+	
+	formData.append("email", email);
+	
+	$.ajax({
+		url: '/loadProfile',
+		processData: false,
+		contentType: false,
+		data: formData,
+		type: 'POST',
+		dataType: 'json',
+		success: function(result){
+			console.log("다녀왔어: "+result);
+			
+			showUploadedFile(result);// 업로드 결과 처리 함수
+			
+		}
+	}); // $.ajax
+});
+</script>
 
 <%@include file="../include/footer.jsp"%>

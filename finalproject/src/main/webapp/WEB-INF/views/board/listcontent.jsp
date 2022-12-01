@@ -7,7 +7,7 @@
 	<!-- Contact -->
 	<article id="contact" class="panel">
 		<header>
-			<h2 style="font-size: 50px">"${vo.topic }"에 대한 ${vo.name}의 생각</h2>
+			<h2 style="font-size: 50px">"${vo.topic }"에 대한 <a href="otherUsersPage?name=${vo.name}">${vo.name}</a>의 생각</h2>
 		</header>
 		<form action="delete" method="post" id="delete">
 			<div>

@@ -34,4 +34,8 @@
 	<delete id="deleteMember" parameterType="org.zerock.command.MemberVO" >
 		delete from members where email = #{email} 
 	</delete>
+	
+	<select id="lookUpMember" resultType="org.zerock.command.MemberVO">
+		select * from members where name = #{name}
+	</select>
  </mapper> 

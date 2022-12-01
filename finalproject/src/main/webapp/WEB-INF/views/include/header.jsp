@@ -29,7 +29,7 @@ System.out.println(name);%>
 
 						<a href="${pageContext.request.contextPath}/board/mypage" class="icon solid fa-envelope"><span style="font-size: 20px">mypage</span></a>
 					<c:choose>
-					  <c:when test="${sessionScope.user_email != null}">
+					  <c:when test="${sessionScope.name != null}">
 						<a href="${pageContext.request.contextPath}/member/userEditPage" class="icon solid fa-user-edit"><span style="font-size: 20px">user_edit</span></a>
 						<a href="${pageContext.request.contextPath}/member/logout" class="icon solid fa-sign-out-alt"><span style="font-size: 20px">logout</span></a>
 					  </c:when>

@@ -32,6 +32,7 @@
 			<exclude-mapping path="/board/topics"/>
 			<exclude-mapping path="/board/listcontent"/>
 			<exclude-mapping path="/board/checklike"/>
+			<exclude-mapping path="/board/otherUsersPage"/>
 			<beans:ref bean="BoardInterceptor"/>
 		</interceptor>
 	</interceptors> 

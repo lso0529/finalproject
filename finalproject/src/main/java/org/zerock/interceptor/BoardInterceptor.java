@@ -11,9 +11,9 @@ public class BoardInterceptor extends HandlerInterceptorAdapter {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		HttpSession session = request.getSession();
-		String user_email = (String)session.getAttribute("user_email");
+		String user_name = (String)session.getAttribute("user_name");
 		
-		if(user_email == null) {
+		if(user_name == null) {
 			response.sendRedirect("/member/loginPage");
 			return false;
 		}else {

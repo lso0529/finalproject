@@ -7,7 +7,7 @@
 	
 	<!-- 전체 주제 목록  -->
 	<select id="topicAll" resultType="org.zerock.command.TopicVO">
-		select * from topics
+		select * from topics order by tno asc
 	</select>
 	
 	<!-- 주제에 대한 글 전체 목록 -->

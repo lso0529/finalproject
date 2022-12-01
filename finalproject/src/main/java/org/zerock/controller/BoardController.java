@@ -295,11 +295,11 @@ public class BoardController {
 		
 		// 글 목록과 좋아요수 가져오기
 		session.setAttribute("otherUser_name", name);
-		ArrayList<BoardVO> mylist = service.mylist(name);
+		ArrayList<BoardVO> yourlist = service.yourlist(name);
 		int count = service.mycount(name);
 		
-		for (int i=0;i<mylist.size();i++) {
-			BoardVO vo = mylist.get(i);
+		for (int i=0;i<yourlist.size();i++) {
+			BoardVO vo = yourlist.get(i);
 			
 			Integer likes = service.liketotal(vo.getBno());
 			
@@ -308,11 +308,11 @@ public class BoardController {
 			}
 			
 			vo.setLikes(likes);
-			mylist.set(i, vo);
+			yourlist.set(i, vo);
 		}
 		// 글 목록과 좋아요수 세션에 담기
 		session.setAttribute("otherUser_count", count);
-		session.setAttribute("otherUser_list", mylist);
+		session.setAttribute("otherUser_list", yourlist);
 		session.setAttribute("otherUser_VO", member_vo);
 		
 		return "board/other_userspage";

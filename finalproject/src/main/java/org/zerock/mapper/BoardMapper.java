@@ -24,4 +24,6 @@ public interface BoardMapper {
 	public Integer liketotal(int bno);
 	public Integer mylike(String name);
 	public Integer findLike(int bno, String name);
+	
+	public ArrayList<BoardVO> yourlist(String name);
 }

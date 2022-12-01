@@ -24,4 +24,6 @@ public interface BoardService {
 	
 	public Integer mylike(String name);
 	public Integer findLike(int bno, String name);
+	
+	public ArrayList<BoardVO> yourlist(String name);
 }

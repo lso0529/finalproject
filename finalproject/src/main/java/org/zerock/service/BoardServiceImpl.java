@@ -107,4 +107,11 @@ public class BoardServiceImpl implements BoardService {
 	public void likedown(int bno, String name) {
 		mapper.likedown(bno, name);		
 	}
+	
+	@Override
+	public ArrayList<BoardVO> yourlist(String name) {
+		ArrayList<BoardVO> yourlist = mapper.yourlist(name);
+		
+		return yourlist;
+	}
 }

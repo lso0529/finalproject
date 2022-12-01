@@ -70,6 +70,7 @@
 									글감: ${otherUser_list.topic }</button>
 								<button
 									style="background-color: #E4E4E4; color: black; font-size: 25px"
+									onclick="location.href='listcontent?bno=${otherUser_list.bno}'"
 									>${otherUser_list.content }</button>
 
 							</div>

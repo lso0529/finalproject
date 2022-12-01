@@ -75,4 +75,9 @@
 	<select id="findLike" resultType="Integer">
 		select count(*) from likes where bno = #{param1} and name = #{param2}
 	</select>
+	
+	<!-- 특정 사용자의 글 목록(비밀글x) -->
+	<select id="yourlist" resultType = "org.zerock.command.BoardVO">
+		select * from board where name=#{name} and secret='0' order by bno desc
+	</select>
 </mapper>

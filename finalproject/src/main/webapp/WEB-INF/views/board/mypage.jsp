@@ -9,13 +9,6 @@
 	transform: translateY(5rem);
 }
 
-/*
-	*
-	* ==========================================
-	* FOR DEMO PURPOSE
-	* ==========================================
-	*
-	*/
 </style>
 
 <div id="main" style="width: 100%; margin: auto;">
@@ -30,7 +23,6 @@
 					<div class="media align-items-end profile-header">
 						<div class="profile mr-3"></div>
 						<div class="media-body mb-5 text-white">
-							<!-- <h4 class="mt-0 mb-0">${sessionScope.user_name }</h4> -->
 							<div class="small mb-4" style="font-size: 25px">
 								<i style="font-size: 25px" class="fa fa-map-marker mr-2"></i>
 								${sessionScope.mycount } 편<br>
@@ -45,7 +37,6 @@
 				<br>
 				<div class="py-4 px-4">
 					<div class="d-flex align-items-center justify-content-between mb-3">
-						<!--<h5 class="mb-0">내가 쓴 글</h5>-->
 						<p style="font-size: 25px">글을 선택하면 상세보기 페이지로 넘어갑니다</p>
 					</div>
 					<br>
@@ -71,14 +62,6 @@
 							</div>
 						</c:forEach>
 					</div>
-					
-					<!--<div class="col-lg-6 mb-2 pr-lg-1" style="background-color: #E4E4E4; width: 70%; height: 400px; margin: auto; line-height:400px; padding: 0;" align="center">
-								<button
-								style="background-color: #E4E4E4; color: black; font-size: 20px; line-height:50px; padding: 0"
-								onclick="location.href='content?'">(주제)</button><br>
-								<button
-								style="background-color: #E4E4E4; color: black; font-size: 20px; line-height:350px; padding: 0"
-								onclick="location.href='content?'">(쓴 글)</button>-->
 				</div>
 			</div>
 

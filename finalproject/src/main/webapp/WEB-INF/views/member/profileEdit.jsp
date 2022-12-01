@@ -10,13 +10,11 @@
 }
 .item-wrapper {
     position: relative;
-    /* 생략 */
 }
 .item-over-image {
     position: absolute;
     left: 0;
     bottom: 0.75em;
-    /* 이하 생략 */
 }
 </style>
 

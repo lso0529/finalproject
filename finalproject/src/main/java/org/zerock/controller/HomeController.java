@@ -43,7 +43,6 @@ public class HomeController {
 		// 글감 랜덤 출력
 		Random random = new Random();
 		
-		//토탈 수 구해와서 어쩌구 저쩌구 
 		int tno = (int)(random.nextInt(10));
 		
 		TopicVO vo = service.selectTopic(tno);

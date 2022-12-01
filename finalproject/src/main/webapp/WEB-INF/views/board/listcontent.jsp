@@ -21,11 +21,9 @@
 						if (secret.equals("0")){ %>
 							<!-- 공개글 -->
 							<input type="checkbox" name="secret" value="1" style="width: 15px; height: 15px" onClick="return false;">비밀글
-							<!-- <input type="checkbox" name="secret" value="1" style="width: 15px; height: 15px" readonly="readonly"> 비밀글 -->
 						<% } else{%>
 							<!-- 비밀글 -->
 							<input type="checkbox" checked onClick="return false;">비밀글
-							<!--  <input type="checkbox" name="secret" value="1" style="width: 15px; height: 15px" readonly="readonly"> 비밀글-->
 						<% }%>
 						<textarea name="content" style="font-size: 25px" placeholder="${vo.content }" rows="6" readonly="readonly"></textarea>
 					</div>
@@ -73,9 +71,6 @@ if(likeval > 0){
 			success : function(data) {
 				alert('취소 성공');
 				window.location.replace("/board/listcontent?bno="+bno);
-				//$('.LikeBtn').html("♡");
-				//$(".liketotal").text(total-1);
-				//likeval = 0;
 			}
 		})// 아작스 끝
 	})
@@ -101,9 +96,6 @@ if(likeval > 0){
 			success : function(data) {
 				alert('좋아요 성공');
 				window.location.replace("/board/listcontent?bno="+bno);
-				//$('.LikeBtn').html("♥");
-				//$(".liketotal").text(total+1);
-				//likeval = 1;
 			}
 		})// 아작스 끝
 	})
@@ -123,7 +115,7 @@ if(likeval > 0){
 			},
 			success : function(total2){
 				//ajax통신에 성공했을 때에 호출될 자바스크립트 함수, 결과 여부가
-				//result매개변수로 전달됨.
+				//total2 매개변수로 전달됨.
 				console.log(total2);
 				
 				$(".liketotal").text(total2);

@@ -18,7 +18,6 @@
 		<div align="center">
 			<input type="checkbox" style="width: 5%; text-align: center;" class="delete" name="agreecheck" id="agreecheck" >탈퇴 동의합니다.<br>
 		</div>		 
-		<!-- <input type="submit" class="btn large loginBtn" value="탈퇴하기" name="checkButton" id="checkButton" disabled>-->
 		<div style="padding:1px;"> </div>
 		<div align="center">	
 			<button type="button" style = "font-size: 20px; height: 50px; width: 130px; line-height: 25px" name="checkButton" id="checkButton" disabled>탈퇴하기</button>

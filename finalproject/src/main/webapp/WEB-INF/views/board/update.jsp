@@ -21,11 +21,9 @@
 						if (secret.equals("0")){ %>
 							<!-- 공개글 -->
 							<input type="checkbox" name="secret" value="1" style="width: 15px; height: 15px">비밀글
-							<!-- <input type="checkbox" name="secret" value="1" style="width: 15px; height: 15px" readonly="readonly"> 비밀글 -->
 						<% } else{%>
 							<!-- 비밀글 -->
 							<input type="checkbox" checked>비밀글
-							<!--  <input type="checkbox" name="secret" value="1" style="width: 15px; height: 15px" readonly="readonly"> 비밀글-->
 						<% }%>
 						<textarea name="content" style="font-size: 25px" id="content" rows="6">${vo.content }</textarea>
 					</div>

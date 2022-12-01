@@ -77,12 +77,10 @@ public class BoardController {
 	public String listcontent(@RequestParam("bno") int bno,
 			Model model,
 			HttpSession session) {
-//		System.out.println(bno+" 상세보기");
 		
 		BoardVO vo = service.mycontent(bno);
 		model.addAttribute("vo", vo);
-//		System.out.println(vo);
-//		System.out.println(vo.getSecret());
+
 		session.setAttribute("secret", vo.getSecret());
 		
 		LikeVO like = new LikeVO();
@@ -106,13 +104,6 @@ public class BoardController {
 		return "/board/listcontent";
 	}
 	
-//	//댓글 조회 및 삭제
-//	@GetMapping(value="/{bno}", produces= {MediaType.APPLICATION_ATOM_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE})
-//	public ResponseEntity<LikeVO> get(@PathVariable("bno") int bno) {
-//		System.out.println("get : "+ bno);
-//		
-//		return new ResponseEntity<>(service.liketotal(bno),HttpStatus.OK);
-//	}
 	
 	// 좋아요 수 가져오기
 	@RequestMapping("/checklike")
@@ -130,10 +121,6 @@ public class BoardController {
 		
 		System.out.println(total2);
 		
-//		if (total2.equals(null)) {
-//			total2 = "0";
-//		}
-		
 		return total2;
 	}
 	
@@ -150,7 +137,7 @@ public class BoardController {
 	
 	@RequestMapping("/mypage")
 	public String mypage(HttpSession session, Model model) {
-//		String name = "name";
+
 		String name = (String) session.getAttribute("user_name");
 		session.setAttribute("user_name", name);
 		ArrayList<BoardVO> mylist = service.mylist(name);
@@ -172,12 +159,6 @@ public class BoardController {
 		
 		session.setAttribute("mycount", count);
 		session.setAttribute("mylist", mylist);
-		
-//		System.out.println("여기"+count+mylist.toString());
-		
-//		model.addAttribute("mylist", mylist);
-//		model.addAttribute("mycount", count);
-//		model.addAttribute("name", name);
 		
 		return "/board/mypage";
 	}
@@ -296,92 +277,4 @@ public class BoardController {
 		System.out.println("좋아요 싫어요!");
 		service.likedown(vo.getBno(), vo.getName());
 	}
-	
-//	@ResponseBody
-//	@PostMapping(value="/like", consumes="application/json", produces= {MediaType.TEXT_PLAIN_VALUE})
-//	public ResponseEntity<String> like(HttpServletRequest request,
-//			HttpServletResponse response, 
-//			@RequestParam("bno") int bno,
-//			@RequestParam("name") String name){
-//		
-//		System.out.println(bno);
-//		System.out.println("좋아요 컨트롤러 영역");
-//		
-//		//좋아요 총 수 가져오기
-//		int total = service.liketotal(bno);
-//		
-//		Cookie[] cookies = request.getCookies();
-//		
-//		for (int i=0; i<cookies.length; i++) {
-//			System.out.println(cookies[i].getName()+" : "+cookies[i].getValue());
-//			if(cookies[i].getValue().equals("like"+bno+name)) {
-//				//좋아요 쿠키가 있는 경우(좋아요 1 down)
-//				System.out.println("좋아요 이미 있음");
-//				
-//				//쿠키 지우는  함수 찾아보기
-//				Cookie delete = new Cookie("like"+bno+name, null);
-//				delete.setMaxAge(0);
-//				response.addCookie(delete);
-//				
-//				if (total<=0) {
-//					return new ResponseEntity<>("success", HttpStatus.OK);
-//				}
-//				
-//				int like2 = total-1;
-//				int insertCount = service.likedown(like2, bno);
-//				
-//				return insertCount == 1 ? new ResponseEntity<>("success", HttpStatus.OK) 
-//						: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-//			}
-//		}
-//		
-//		//좋아요 쿠키가 없는 경우(좋아요 1 up)
-//		System.out.println("좋아요 처리");
-//		int like1 = total+1;
-//		int insertCount = service.likeup(like1, bno);
-//		Cookie like = new Cookie("like"+bno+name, "like"+bno+name);
-//		like.setMaxAge(86400);	
-//		response.addCookie(like);
-//		
-//		return insertCount == 1 ? new ResponseEntity<>("success", HttpStatus.OK) 
-//								: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-//	}
-	
-//	@RequestMapping("/like")
-//	public String like(HttpServletRequest request,
-//			HttpServletResponse response, 
-//			@RequestParam("bno") int bno,
-//			@RequestParam("name") String name) {
-//		System.out.println(bno);
-//		System.out.println("좋아요 컨트롤러 영역");
-//		
-//		//좋아요 총 수 가져오기
-//		int total = service.liketotal(bno);
-//		
-//		Cookie[] cookies = request.getCookies();
-//		
-//		for (int i=0; i<cookies.length; i++) {
-//			System.out.println(cookies[i].getName()+" : "+cookies[i].getValue());
-//			if(cookies[i].getValue().equals("like"+bno+name)) {
-//				//좋아요 쿠키가 있는 경우(좋아요 1 down)
-//				System.out.println("좋아요 이미 있음");
-//				int like2 = total-1;
-//				service.likedown(like2, bno);
-//				
-//				//쿠키 지우는  함수 찾아보기
-//				
-//				return "";
-//			}
-//		}
-//		
-//		//좋아요 쿠키가 없는 경우(좋아요 1 up)
-//		System.out.println("좋아요 처리");
-//		int like1 = total+1;
-//		service.likeup(like1, bno);
-//		Cookie like = new Cookie("like"+bno+name, "like"+bno+name);
-//		like.setMaxAge(86400);	
-//		response.addCookie(like);
-//		
-//		return "";
-//	}
 }

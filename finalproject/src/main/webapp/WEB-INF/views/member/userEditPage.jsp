@@ -161,7 +161,6 @@ session.setAttribute("user_email", user_email);
 					
 					showUploadedFile(result);// 업로드 결과 처리 함수
 					
-					<!--$(".uploadDiv").html(cloneObj.html());-->
 				}
 			}); // $.ajax
 		});
@@ -180,14 +179,10 @@ session.setAttribute("user_email", user_email);
 		
 		$(uploadResultArr).each(function(i, obj){
 			
-			/*if(!obj.image){
-				str += "<img class='profil-image' src='${pageContext.request.contextPath}/resources/images/test profil.jpg alt='프로필'>"+obj.fileName;
-			}else{*/
 				var fileCallPath = encodeURIComponent(obj.uploadPath + "/s_" + obj.uuid + "-" + obj.fileName);
 				console.log(fileCallPath);
 				
 				str += "<img class='profil-image item-over-image' src='/display?fileName="+fileCallPath+"'>";
-			//}
 		});
 		uploadResult.append(str);
 	}

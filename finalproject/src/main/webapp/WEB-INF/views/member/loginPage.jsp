@@ -7,14 +7,6 @@
   			src="http://code.jquery.com/jquery-3.5.1.js"
   			integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
   			crossorigin="anonymous"></script>
-  	<style>
-  	/*button.loginBtn{
-  		vertical-align:middle;
-  	}
-  	html{
-  		font-size: 22px;
-  	}*/
-  	</style>
 </head>
 <body>
 
@@ -37,8 +29,7 @@
           <input type="email" placeholder="이메일" class="input" name="email" id="signEmail"><br />
           <input type="hidden" id="email_duplicateCheck" value="emailUncheck">
            <font id = "checkEmail2" size = "3"></font>
-          
-          <!--<input type="button" class="btn" value="이메일 중복 체크" onclick="emailCheck()"> -->
+
           
           <input type="text" placeholder="닉네임" class="input" name="name" id="signName"><br />
           <font id = "checkNickName" size = "3"></font>
@@ -49,8 +40,6 @@
           <input type="password" placeholder="패스워드 확인" class="input" name="pw2" id="signPw2"><br />
           
           <input type="button" value="회원가입" style="width: 100%;" onclick="signupCheck()" id="sign_btn" style="padding: 0px">
-          <!-- <button type="button" value="회원가입" style="width: 100%;" onclick="signupCheck()" id="sign_btn" style="padding: 0px">회원가입</button> -->
-          <!-- <button type="button" style = "font-size: 20px; height: 50px; width: 130px; line-height: 25px" onclick="location.href='list?topic=${vo.topic}'">목록으로</button> -->
       	  <font  id="sign_btn" style = "font-family: Hi Melody"> </font>
        </form>
     </div>
@@ -179,7 +168,6 @@
 					//result매개변수로 전달됨.
 					console.log("있음(1)없음(0) 여부 : "+result);
 					
-					<!--document.querySelector("#signEmail").style.setProperty('padding','5px');-->
 					document.querySelector("#signEmail").style.setProperty('margin','5px');
 					if(result == "1"){ //중복된 이메일이 존재함
 						$("#checkEmail2").html("이미 존재하는 이메일이 있습니다.");

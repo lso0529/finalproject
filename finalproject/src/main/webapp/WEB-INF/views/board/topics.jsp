@@ -21,7 +21,6 @@
 							<button
 								style="background-color: #E4E4E4; color: black; font-size: 30px"
 								onclick="location.href='list?topic=${list.tname }'">${list.tname }</button>
-							<!-- <a href="list?topic=${list.tname }">${list.tname }</a> -->
 						</div>
 					</div>
 				</c:forEach>

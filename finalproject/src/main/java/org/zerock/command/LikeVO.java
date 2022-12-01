@@ -11,6 +11,6 @@ public class LikeVO {
 	private int likecount;
 	
 	public LikeVO() {
-		// TODO Auto-generated constructor stub
+
 	}
 }

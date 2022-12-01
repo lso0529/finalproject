@@ -4,19 +4,6 @@
 <%@include file="../include/header.jsp"%>
 
 <style>
-.profil-modal{ 
-  position:absolute; width:100%; height:100%; background: rgba(0,0,0,0.8); top:0; left:0; display:none;
-}
-
-.profil-modal-content{
-  width:400px; height:200px;
-  background:#fff; border-radius:10px;
-  position:relative; top:50%; left:50%;
-  margin-top:-100px; margin-left:-200px;
-  text-align:center;
-  box-sizing:border-box; padding:74px 0;
-  line-height:23px; cursor:pointer;
-}
 .profil-div{
 	width: 70px; height: 70px;
 	border-radius: 70%;
@@ -27,14 +14,21 @@
 	height: 100%;
 	object-fit: cover;
 }
+
 .item-wrapper {
     position: relative;
 }
-.item-over-image {
-    position: absolute;
+.item-over-image1 {
     right: 0;
     bottom: 1px;
+}
+.item-over-image2 {
+    position: relative;
+    right: -45px;
+    top: -20px;
+    bottom: 0px;
     background-color: white;
+    border-radius: 70%
 }
 </style> 
 
@@ -57,18 +51,17 @@ session.setAttribute("user_email", user_email);
 			<div class="bg-white shadow rounded overflow-hidden">
 				<div class="px-4 pt-0 pb-4 bg-dark">
 					<div class="media align-items-end profile-header">
-						<div class="profile"></div>
 						<div class="media-body mb-5 text-white">
 						
-						<div class="wrapper">
-							<div class="profil-div item-wrapper">
+						<div class="wrapper item-wrapper">
+							<div class="profil-div">
 								<div class="uploadResult">
-									<img class="profil-image item-over-image" src="${pageContext.request.contextPath}/resources/images/test profil.jpg" alt="프로필">
+									<!-- <img class="profil-image item-over-image" src="${pageContext.request.contextPath}/resources/images/test profil.jpg" alt="프로필"> -->
 								</div>
-								<div class="uploadDiv">
-									<i class="fa fa-camera-retro item-over-image" id=target_icon ></i>
-									<input type="file" id="uploadfile" name="uploadfile" accept="image/*" style="display: none;" multiple>
-								</div>
+							</div>								
+							<div class="uploadDiv">
+								<img class="item-over-image2" id=target_image title="프로필 사진 수정"src="${pageContext.request.contextPath}/resources/images/free-icon-camera-4778794.png">
+								<input type="file" id="uploadfile" name="uploadfile" accept="image/*" style="display: none;" multiple>
 							</div>
 						</div>
 							<h4 class="mt-0 mb-0"><%=user_name%></h4>
@@ -98,11 +91,10 @@ session.setAttribute("user_email", user_email);
 
 <script>
 
-
-	$('#target_icon').click(function (e) {
-	    $('#uploadfile').click();
+	$('#target_image').click(function (e) {
+    	$('#uploadfile').click();
 	});  
-
+	
 	var regex = new RegExp("(.*?)\.(exe|sh|zip|alz)$"); // 파일 확장자 제한 
 	var maxSize = 5242880; // 5MB 제한
 	
@@ -182,7 +174,7 @@ session.setAttribute("user_email", user_email);
 				var fileCallPath = encodeURIComponent(obj.uploadPath + "/s_" + obj.uuid + "-" + obj.fileName);
 				console.log(fileCallPath);
 				
-				str += "<img class='profil-image item-over-image' src='/display?fileName="+fileCallPath+"'>";
+				str += "<img class='profil-image item-over-image1' src='/display?fileName="+fileCallPath+"'>";
 		});
 		uploadResult.append(str);
 	}
@@ -213,7 +205,7 @@ session.setAttribute("user_email", user_email);
 			}
 		}); // $.ajax
 	});
-	
+
 </script>
 
 

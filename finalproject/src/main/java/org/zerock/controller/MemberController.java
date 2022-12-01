@@ -38,7 +38,7 @@ public class MemberController {
 		return "/member/loginPage";
 	}
 	
-	//아이디 중복체크 
+	// 이메일아이디 중복체크 
 	@ResponseBody
 	@RequestMapping("/checkEmail")
 	public String checkEmail(@RequestParam("checkEmail") String checkEmail) {

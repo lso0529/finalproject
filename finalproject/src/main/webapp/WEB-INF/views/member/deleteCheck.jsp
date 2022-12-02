@@ -20,7 +20,7 @@
 		</div>		 
 		<div style="padding:1px;"> </div>
 		<div align="center">	
-			<button type="button" style = "font-size: 20px; height: 50px; width: 130px; line-height: 25px" name="checkButton" id="checkButton" disabled>탈퇴하기</button>
+			<button type="submit" style = "font-size: 20px; height: 50px; width: 130px; line-height: 25px" name="checkButton" id="checkButton" disabled>탈퇴하기</button>
 			<button type="button" style = "font-size: 20px; height: 50px; width: 130px; line-height: 25px" onclick="location.href='userEditPage'">취소</button>	
 		</div>
 	</form>
@@ -31,20 +31,16 @@
 	
 	$('#agreecheck').click(function(){
 		let check = $('#agreecheck').prop('checked');
+		const target = document.getElementById('checkButton');
 		
 		if(check){
 			console.log("체크");
-			const target = document.getElementById('checkButton');
 			target.disabled= false;		
 		}else{
-			console.log("체크 해제")
-			const target = document.getElementById('checkButton');
+			console.log("체크 해제");
 			target.disabled= true;
 		}
-	})
-	
-	
-	
+	});
 	</script>
 	
 <%@include file="../include/footer.jsp"%>
